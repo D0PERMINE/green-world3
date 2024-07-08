@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
 
-    Vector2 movement;
+    public Vector2 movement;
 
     // Update is called once per frame
     void Update()
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastHorizontal", movement.x);
             animator.SetFloat("LastVertical", movement.y);
         }
+
     }
 
     private void FixedUpdate()
