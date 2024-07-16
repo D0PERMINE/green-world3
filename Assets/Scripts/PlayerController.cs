@@ -18,11 +18,19 @@ public class PlayerController : MonoBehaviour
     public bool correctTrashType = false;
     public bool onCollisionWithTashBin = false;
 
-
+    public AudioSource footstepAudio;
+    //public float stepInterval = 0.5f; // Zeit zwischen den Schritten
+    private float stepTimer;
     void Start()
     {
         //rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
+
+        if (footstepAudio == null)
+        {
+            footstepAudio = GetComponent<AudioSource>();
+        }
+        stepTimer = 0;
     }
 
     void Update()
@@ -30,34 +38,7 @@ public class PlayerController : MonoBehaviour
         //movement.x = Input.GetAxis("Horizontal");
         //movement.y = Input.GetAxis("Vertical");
 
-        Vector2 movement = playerMovement.movement;
-
-        if (movement != Vector2.zero)
-        {
-            lastMovementDirection = movement.normalized;
-            
-            if (lastMovementDirection.x < 0)
-            {
-                holdDistance = 1.0f;
-                holdDistance = 0.5f;
-            }
-            else if (lastMovementDirection.x > 0)
-            {
-                holdDistance = 1.0f;
-                holdDistance = 0.5f;
-            }
-            else if (lastMovementDirection.y < 0)
-            {
-                holdDistance = 1.7f;
-                holdDistance = -0.2f;
-            }
-            else if (lastMovementDirection.y > 0)
-            {
-                holdDistance = 1.2f;
-                holdDistance = 0.7f;
-            }
-
-        }
+        HoldDistance();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -71,11 +52,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (heldTrash != null)
-        {
-            Vector2 holdPositionOffset = lastMovementDirection * holdDistance;
-            heldTrash.transform.position = (Vector2)transform.position + holdPositionOffset;
-        }
+        FoodStepAudioOn();
     }
 
     void FixedUpdate()
@@ -121,7 +98,68 @@ public class PlayerController : MonoBehaviour
                 ScoreManager.Instance.AddScore(-5);
                 Destroy(heldTrash);
             }
+            
             heldTrash = null;
+        }
+    }
+
+    private void CalculateHoldDistance()
+    {
+        Vector2 movement = playerMovement.movement;
+        if (movement != Vector2.zero)
+        {
+            lastMovementDirection = movement.normalized;
+
+            if (lastMovementDirection.x < 0)
+            {
+                holdDistance = 1.0f;
+                holdDistance = 0.5f;
+            }
+            else if (lastMovementDirection.x > 0)
+            {
+                holdDistance = 1.0f;
+                holdDistance = 0.5f;
+            }
+            else if (lastMovementDirection.y < 0)
+            {
+                holdDistance = 1.7f;
+                holdDistance = -0.2f;
+            }
+            else if (lastMovementDirection.y > 0)
+            {
+                holdDistance = 1.2f;
+                holdDistance = 0.7f;
+            }
+
+        }
+    }
+
+    private void HoldDistance()
+    {
+        CalculateHoldDistance();
+
+        if (heldTrash != null)
+        {
+            Vector2 holdPositionOffset = lastMovementDirection * holdDistance;
+            heldTrash.transform.position = (Vector2)transform.position + holdPositionOffset;
+        }
+    }
+
+    private bool IsCharacterMoving()
+    {
+        return Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
+    }
+
+    private void FoodStepAudioOn()
+    {
+        // Überprüfe, ob der Charakter sich bewegt
+        if (IsCharacterMoving())
+        {
+            footstepAudio.enabled = true;
+        }
+        else
+        {
+            footstepAudio.enabled = false;
         }
     }
 
