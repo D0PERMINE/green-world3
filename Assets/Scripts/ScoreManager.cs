@@ -8,6 +8,9 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private int score = 0;
 
+    public AudioSource correctAudio;
+    public AudioSource incorrectAudio;
+
     void Awake()
     {
         if (Instance == null)
@@ -23,6 +26,19 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int points)
     {
         score += points;
+        PlayAudioScore(points);
         scoreText.text = "Score: " + score;
+    }
+
+    private void PlayAudioScore(int points)
+    {
+        if (points > 0)
+        {
+            correctAudio.Play();
+        } 
+        else if( points < 0)
+        {
+            incorrectAudio.Play();
+        }
     }
 }

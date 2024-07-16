@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     public bool onCollisionWithTashBin = false;
 
     public AudioSource footstepAudio;
-    //public float stepInterval = 0.5f; // Zeit zwischen den Schritten
-    private float stepTimer;
+    public AudioSource pickUpAndDropItemAudio;
+
     void Start()
     {
         //rb = GetComponent<Rigidbody2D>();
@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
         {
             footstepAudio = GetComponent<AudioSource>();
         }
-        stepTimer = 0;
     }
 
     void Update()
@@ -73,6 +72,7 @@ public class PlayerController : MonoBehaviour
                 {
                     trashRb.isKinematic = true;
                 }
+                pickUpAndDropItemAudio.Play();
                 break;
             }
         }
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
                 ScoreManager.Instance.AddScore(-5);
                 Destroy(heldTrash);
             }
-            
+            pickUpAndDropItemAudio.Play();
             heldTrash = null;
         }
     }

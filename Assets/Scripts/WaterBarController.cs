@@ -17,6 +17,8 @@ public class WaterBarController : MonoBehaviour
     private Color blinkColor; // Farbe, in die geblinkt werden soll
     private float blinkTimer = 0f;
 
+    public AudioSource addWaterAudio;
+
 
 
     void Start()
@@ -86,6 +88,7 @@ public class WaterBarController : MonoBehaviour
     public void AddWater(float amount)
     {
         currentWater += amount;
+        addWaterAudio.Play();
         if (currentWater > maxWater)
         {
             currentWater = maxWater;

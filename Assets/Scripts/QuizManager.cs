@@ -17,6 +17,9 @@ public class QuizManager : MonoBehaviour
 
     private int maxPoints = 100; // Maximalpunktzahl für 100% Fortschritt
 
+    public AudioSource correctAnswerAudio;
+    public AudioSource incorrectAnswerAudio;
+
     void Start()
     {
         UpdateUI();
@@ -35,11 +38,13 @@ public class QuizManager : MonoBehaviour
         if ((isPlayerOnOption1 && correctOption == "option1") || (isPlayerOnOption2 && correctOption == "option2"))
         {
             score += 10;
+            correctAnswerAudio.Play();
             UpdateUI();
         }
         else if((isPlayerOnOption1 && correctOption != "option1") || (isPlayerOnOption2 && correctOption != "option2"))
         {
             score -= 10;
+            incorrectAnswerAudio.Play();
             UpdateUI();
         }
         else
