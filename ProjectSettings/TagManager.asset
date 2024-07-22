@@ -9,6 +9,7 @@ TagManager:
   - Szenario2
   - Trash
   - TrashBin
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -43,11 +44,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 4219059227
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Foreground
     uniqueID: 1827538837

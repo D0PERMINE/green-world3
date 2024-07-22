@@ -8,9 +8,20 @@ public class TrashSpawner : MonoBehaviour
     public Vector2 spawnAreaMin; // Minimum X und Y Koordinaten des Spawn-Bereichs
     public Vector2 spawnAreaMax; // Maximum X und Y Koordinaten des Spawn-Bereichs
 
-    void Start()
+    private bool canSpawn = false; // Steuerung, ob Spawnen erlaubt ist
+
+    private void Update()
     {
-        StartCoroutine(SpawnTrashRoutine());
+        StartSpawning();
+    }
+
+    public void StartSpawning()
+    {
+        if (canSpawn)
+        {
+            canSpawn = false;
+            StartCoroutine(SpawnTrashRoutine());
+        }
     }
 
     IEnumerator SpawnTrashRoutine()
@@ -35,5 +46,11 @@ public class TrashSpawner : MonoBehaviour
 
         // Erzeuge das Müllobjekt an der zufälligen Position
         Instantiate(trashPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    // Methode zum Aktivieren des Spawnen
+    public void EnableSpawning()
+    {
+        canSpawn = true;
     }
 }

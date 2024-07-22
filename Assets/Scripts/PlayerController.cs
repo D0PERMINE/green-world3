@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
 
-    //public float moveSpeed = 5f;
-    //private Rigidbody2D rb;
-    //private Vector2 movement;
     public GameObject heldTrash = null;
 
     public Transform holdPosition;
@@ -18,18 +15,12 @@ public class PlayerController : MonoBehaviour
     public bool correctTrashType = false;
     public bool onCollisionWithTashBin = false;
 
-    public AudioSource footstepAudio;
     public AudioSource pickUpAndDropItemAudio;
 
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
 
-        if (footstepAudio == null)
-        {
-            footstepAudio = GetComponent<AudioSource>();
-        }
     }
 
     void Update()
@@ -51,7 +42,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        FoodStepAudioOn();
     }
 
     void FixedUpdate()
@@ -142,24 +132,6 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 holdPositionOffset = lastMovementDirection * holdDistance;
             heldTrash.transform.position = (Vector2)transform.position + holdPositionOffset;
-        }
-    }
-
-    private bool IsCharacterMoving()
-    {
-        return Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
-    }
-
-    private void FoodStepAudioOn()
-    {
-        // Überprüfe, ob der Charakter sich bewegt
-        if (IsCharacterMoving())
-        {
-            footstepAudio.enabled = true;
-        }
-        else
-        {
-            footstepAudio.enabled = false;
         }
     }
 
