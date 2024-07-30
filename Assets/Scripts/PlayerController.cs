@@ -14,8 +14,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastMovementDirection = Vector2.up; // Default to up
     public bool correctTrashType = false;
     public bool onCollisionWithTashBin = false;
+    public TrashBin[] trashBin;
+    private int trashBinType;
 
     public AudioSource pickUpAndDropItemAudio;
+
+
 
     void Start()
     {
@@ -81,11 +85,13 @@ public class PlayerController : MonoBehaviour
             {
                 // Punkte hinzufügen
                 ScoreManager.Instance.AddScore(10);
+                trashBin[trashBinType].SetTrashDropped(true);
                 Destroy(heldTrash);
             } else if (!correctTrashType && onCollisionWithTashBin)
             {
                 // Minuspunkte hinzufügen
                 ScoreManager.Instance.AddScore(-5);
+                trashBin[trashBinType].SetTrashDropped(true);
                 Destroy(heldTrash);
             }
             pickUpAndDropItemAudio.Play();
@@ -132,6 +138,22 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 holdPositionOffset = lastMovementDirection * holdDistance;
             heldTrash.transform.position = (Vector2)transform.position + holdPositionOffset;
+        }
+    }
+
+    public void SetTrashBinType(string trashBinType)
+    {
+        if (trashBinType == "Rest")
+        {
+            this.trashBinType = 0;
+        } 
+        else if (trashBinType == "Plastik")
+        {
+            this.trashBinType = 1;
+        }
+        else if (trashBinType == "Bio")
+        {
+            this.trashBinType = 2;
         }
     }
 
