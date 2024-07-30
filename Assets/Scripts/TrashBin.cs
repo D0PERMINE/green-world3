@@ -6,10 +6,12 @@ public class TrashBin : MonoBehaviour
     public PlayerController playerController;
     public GlowEffect glowEffect;
     private bool trashDropped;
+    public TrashBinManager trashBinManager;
+    
 
     private void Start()
     {
-         playerController = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     private void Update()
@@ -24,6 +26,8 @@ public class TrashBin : MonoBehaviour
     public void SetTrashDropped(bool trashDropped)
     {
         this.trashDropped = trashDropped;
+        trashBinManager.SetCollectedTrash();
+        Debug.Log("collected trash: " + trashBinManager.GetCollectedTrash());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -58,4 +62,6 @@ public class TrashBin : MonoBehaviour
     {
         playerController.onCollisionWithTashBin = false;
     }
+
+
 }
