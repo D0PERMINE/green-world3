@@ -23,7 +23,10 @@ public class QuizManager : MonoBehaviour
 
     public GameObject[] questions; // Array von GameObjects der Fragen
     private int currentIndex = 0; // Index des aktuell sichtbaren Sprites
+    private int currentQuestion;
     private bool isSwitching = false; // Flag, um sicherzustellen, dass das Umschalten nicht mehrfach ausgelöst wird
+    private bool endOfQuiz;
+    public AchievementDoorController achievementDoorController;
 
     void Start()
     {
@@ -37,6 +40,8 @@ public class QuizManager : MonoBehaviour
 
     void Update()
     {
+        currentQuestion = currentIndex + 1;
+        endOfQuiz = currentQuestion >= questions.Length;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CheckAnswer();
@@ -91,6 +96,7 @@ public class QuizManager : MonoBehaviour
     {
         if (!isSwitching)
         {
+            Debug.Log("Switch Quiz: " + currentQuestion + "/" + questions.Length + endOfQuiz);
             StartCoroutine(SwitchSprite());
         }
     }
@@ -103,15 +109,23 @@ public class QuizManager : MonoBehaviour
         questions[currentIndex].SetActive(false);
 
         // Warte 3 Sekunden
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
 
-        // Bestimme das nächste Sprite im Array
-        currentIndex = (currentIndex + 1) % questions.Length;
+        if (!endOfQuiz)
+        {
+            // Bestimme das nächste Sprite im Array
+            currentIndex = (currentIndex + 1);
 
-        // Blende das nächste Sprite ein
-        questions[currentIndex].SetActive(true);
+            // Blende das nächste Sprite ein
+            questions[currentIndex].SetActive(true);
 
-        isSwitching = false;
+            isSwitching = false;
+        }
+        else
+        {
+            achievementDoorController.SetQuizIsFinished(true);
+        }
+
     }
 
     //private void OnTriggerEnter2D(Collider2D other)
