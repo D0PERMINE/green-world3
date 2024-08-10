@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7881704203281278735}
   - component: {fileID: -6014018152386041328}
   - component: {fileID: -8277470741724567805}
+  - component: {fileID: 141249384799755380}
   m_Layer: 0
-  m_Name: Bio-Muell
-  m_TagString: Untagged
+  m_Name: bio-waste
+  m_TagString: TrashBin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 049b5c621e37657498ecdf63dcbdd973, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72,11 +73,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1827538837
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: adcd47934c2fef648a74a469366ff56d, type: 3}
-  m_Color: {r: 0, g: 0.5, b: 0.07262671, a: 1}
+  m_Color: {r: 0, g: 0.8396226, b: 0.12373387, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,6 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   binType: Bio
+  trashType: 2
+  playerController: {fileID: 0}
+  glowEffect: {fileID: 141249384799755380}
+  trashBinManager: {fileID: 0}
 --- !u!61 &-8277470741724567805
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,3 +149,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8966666, y: 2.1333334}
   m_EdgeRadius: 0
+--- !u!114 &141249384799755380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150076963759887286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657983f8c477f8f4aa25341995702d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxGlowStrength: 0.38
+  glowDuration: 1.5
+  glowColor: {r: 0.010145942, g: 0.7169812, b: 0.1102002, a: 1}

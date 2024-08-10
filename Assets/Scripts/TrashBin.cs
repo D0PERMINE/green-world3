@@ -1,8 +1,16 @@
 using UnityEngine;
 
+
+public enum TrashType
+{
+    residual,
+    plastic,
+    bio
+}
 public class TrashBin : MonoBehaviour
 {
-    public string binType;
+   // public string binType;
+    public TrashType trashType;
     public PlayerController playerController;
     public GlowEffect glowEffect;
     private bool trashDropped;
@@ -11,17 +19,18 @@ public class TrashBin : MonoBehaviour
 
     private void Start()
     {
-        playerController = FindObjectOfType<PlayerController>();
+       // playerController = FindObjectOfType<PlayerController>();
     }
 
-    private void Update()
-    {
-        if (trashDropped)
-        {
-            glowEffect.TriggerGlow();
-            trashDropped = false;
-        }
-    }
+    //private void Update()
+    //{
+    //    if (trashDropped)
+    //    {
+    //        glowEffect.TriggerGlow();
+    //        trashDropped = false;
+           
+    //    }
+    //}
 
     public void SetTrashDropped(bool trashDropped)
     {
@@ -30,18 +39,17 @@ public class TrashBin : MonoBehaviour
         Debug.Log("collected trash: " + trashBinManager.GetCollectedTrash());
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (playerController.heldTrash != null)
-        {
-            Debug.Log("1");
-            if (other.CompareTag("Trash"))
-            {
-                Debug.Log("2");
-                var trashType = other.GetComponent<Trash>().trashType;
-                var binType = this.gameObject.GetComponent<TrashBin>().binType;
 
-                if (binType == trashType)
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>())
+        {
+            playerController = other.gameObject.GetComponent<PlayerController>();
+            if (playerController.heldTrash != null)
+            {
+                TrashType heldTrashType = playerController.heldTrash.GetComponent<Trash>().trash;
+
+                if (heldTrashType == trashType)
                 {
                     Debug.Log("true");
                     playerController.correctTrashType = true;
@@ -51,12 +59,38 @@ public class TrashBin : MonoBehaviour
                     Debug.Log("false");
                     playerController.correctTrashType = false;
                 }
-                playerController.SetTrashBinType(binType);
 
+               
                 playerController.onCollisionWithTashBin = true;
+                playerController.selectedTrashBin = this;
             }
         }
     }
+            //if (playerController.heldTrash != null)
+            //{ }
+            //Debug.Log("1");
+            //if (other.CompareTag("Trash"))
+            //{
+            //    Debug.Log("2");
+            //    var trashType = other.GetComponent<Trash>().trashType;
+            //    var binType = this.gameObject.GetComponent<TrashBin>().binType;
+
+            //    if (binType == trashType)
+            //    {
+            //        Debug.Log("true");
+            //        playerController.correctTrashType = true;
+            //    }
+            //    else
+            //    {
+            //        Debug.Log("false");
+            //        playerController.correctTrashType = false;
+            //    }
+            //    playerController.SetTrashBinType(binType);
+
+            //    playerController.onCollisionWithTashBin = true;
+            //}
+            // }
+       // }
 
     private void OnTriggerExit2D(Collider2D other)
     {
