@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         //movement.x = Input.GetAxis("Horizontal");
         //movement.y = Input.GetAxis("Vertical");
+        if(GameStateHandler.Instance.GameState != GameState.game) { return; }
 
         HoldDistance();
 

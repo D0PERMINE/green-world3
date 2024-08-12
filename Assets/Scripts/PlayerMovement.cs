@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameStateHandler.Instance.GameState != GameState.game) { return; }
         Move();
         FoodStepAudioOn();
 
