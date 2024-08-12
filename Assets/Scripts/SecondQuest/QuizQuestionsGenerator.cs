@@ -15,6 +15,8 @@ public class QuizQuestionsGenerator : MonoBehaviour
     [SerializeField] GameObject image_2;
     [SerializeField] GameObject text_2;
 
+    [SerializeField] GameObject question;
+
 
     private void Start()
     {
@@ -23,8 +25,10 @@ public class QuizQuestionsGenerator : MonoBehaviour
 
     public void SetCurrentQuiz()
     {
-        image_1.GetComponent<Image>().sprite = quizQuestions[QuizUIManager.Instance.currentQuizIndex].Image_1;
+        question.GetComponent<TMP_Text>().text = quizQuestions[QuizUIManager.Instance.currentQuizIndex].Question;
 
+
+        image_1.GetComponent<Image>().sprite = quizQuestions[QuizUIManager.Instance.currentQuizIndex].Image_1;
         text_1.GetComponent<TMP_Text>().text = quizQuestions[QuizUIManager.Instance.currentQuizIndex].Description_1;
 
         image_2.GetComponent<Image>().sprite = quizQuestions[QuizUIManager.Instance.currentQuizIndex].Image_2;
@@ -36,6 +40,11 @@ public class QuizQuestionsGenerator : MonoBehaviour
     public QuizQuestionSO GetQuizQuestion()
     {
         return quizQuestions[QuizUIManager.Instance.currentQuizIndex];
+    }
+
+    public QuizQuestionSO[] GetQuizQuestionsArray()
+    {
+        return quizQuestions;
     }
 }
 

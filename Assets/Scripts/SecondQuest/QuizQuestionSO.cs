@@ -12,6 +12,7 @@ public enum RightOption
 [CreateAssetMenu(fileName = "QuizQuestion_", menuName = "ScriptableObjects/QuizQuestionScriptableObject", order = 1)]
 public class QuizQuestionSO : ScriptableObject
 {
+    public string Question;
     public string Description_1;
     public Sprite Image_1;
 

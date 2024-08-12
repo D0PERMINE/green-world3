@@ -7,7 +7,7 @@ public class QuizUIManager : MonoBehaviour
     public static QuizUIManager Instance { get; private set; }
     [SerializeField] SecondQuestOptionHandler selectedOption;
     public int currentQuizIndex = 0;
-
+    [SerializeField] bool endOfQuiz = false;
 
     private void Awake()
     {
@@ -37,6 +37,7 @@ public class QuizUIManager : MonoBehaviour
     public void CheckSelectedAnswer()
     {
         if (selectedOption == null) return;
+        //if (currentQuizIndex >= GetComponent<QuizQuestionsGenerator>().GetQuizQuestionsArray().Length-1) { endOfQuiz = true; return; }
         int rightOptionId = (int)GetComponent<QuizQuestionsGenerator>().GetQuizQuestion().rightOption;
         if(rightOptionId == selectedOption.GetOptionId())
         {
@@ -46,6 +47,38 @@ public class QuizUIManager : MonoBehaviour
         {
             Debug.Log("Was wrong option selected");
         }
+        UpdateQuiz();
     }
+
+    //void UpdateProgressBar()
+    //{
+    //    float progress = (float)score / maxPoints; // Berechne den Fortschritt
+    //    progressBar.fillAmount = progress; // Setze den Fortschritt des Bildes
+    //}
+
+    private void UpdateQuiz()
+    {
+       
+            Debug.Log("Switch Question");
+            StartCoroutine(SwitchSprite());
+        
+    }
+
+    IEnumerator SwitchSprite()
+    {     
+        yield return new WaitForSeconds(0f);
+
+        if (currentQuizIndex < GetComponent<QuizQuestionsGenerator>().GetQuizQuestionsArray().Length-1)
+        {
+            currentQuizIndex++;
+            GetComponent<QuizQuestionsGenerator>().SetCurrentQuiz();
+        }
+        else
+        {
+            endOfQuiz = true;
+        }
+
+    }
+
 
 }
