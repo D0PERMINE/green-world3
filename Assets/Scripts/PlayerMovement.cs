@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameStateHandler.Instance.GameState != GameState.game) { SetMovementInputToZero(); return; }
         // movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }

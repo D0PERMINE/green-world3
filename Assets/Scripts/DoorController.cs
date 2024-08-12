@@ -19,7 +19,7 @@ public class DoorController : MonoBehaviour
         targetPosition = new Vector3(initialPosition.x, initialPosition.y + moveDistance, initialPosition.z);
     }
 
-    void Update()
+    public void OpenDoor()
     {
         // Überprüfen Sie, ob die Leertaste gedrückt wurde
         if (trashBinManager.GetAllTrashCollected())
@@ -38,6 +38,14 @@ public class DoorController : MonoBehaviour
             {
                 isOpening = false; // Beenden Sie die Bewegung
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+      if(collision.gameObject.tag == "Player")
+        {
+            FirstLevelGameManager.Instance.EndFirstLevel();
         }
     }
 }

@@ -86,14 +86,13 @@ public class PlayerController : MonoBehaviour
             if (correctTrashType && onCollisionWithTashBin)
             {
                 // Punkte hinzufügen
-                ScoreManager.Instance.AddScore(10);
-                //trashBins[trashBinType].SetTrashDropped(true);
+                FirstLevelGameManager.Instance.UpdateScrore(true);
                 Destroy(heldTrash);
+
             } else if (!correctTrashType && onCollisionWithTashBin)
             {
                 // Minuspunkte hinzufügen
-                ScoreManager.Instance.AddScore(-5);
-               // trashBins[trashBinType].SetTrashDropped(true);
+                FirstLevelGameManager.Instance.UpdateScrore(false);
                 Destroy(heldTrash);
             }
             pickUpAndDropItemAudio.Play();

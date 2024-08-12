@@ -4,7 +4,7 @@ using System.Collections;
 public class TrashSpawner : MonoBehaviour
 {
     public GameObject[] trashPrefabs; // Array von Müll-Prefabs
-    private int numberOfTrashToSpawn = 9; // Anzahl der zu spawnenden Müllobjekte
+    [SerializeField] int numberOfTrashToSpawn = 1; // Anzahl der zu spawnenden Müllobjekte
     public Vector2 spawnAreaMin; // Minimum X und Y Koordinaten des Spawn-Bereichs
     public Vector2 spawnAreaMax; // Maximum X und Y Koordinaten des Spawn-Bereichs
 
