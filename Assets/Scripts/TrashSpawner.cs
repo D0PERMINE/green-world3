@@ -4,7 +4,6 @@ using System.Collections;
 public class TrashSpawner : MonoBehaviour
 {
     public GameObject[] trashPrefabs; // Array von Müll-Prefabs
-    [SerializeField] int numberOfTrashToSpawn = 1; // Anzahl der zu spawnenden Müllobjekte
     public Vector2 spawnAreaMin; // Minimum X und Y Koordinaten des Spawn-Bereichs
     public Vector2 spawnAreaMax; // Maximum X und Y Koordinaten des Spawn-Bereichs
 
@@ -26,7 +25,7 @@ public class TrashSpawner : MonoBehaviour
 
     IEnumerator SpawnTrashRoutine()
     {
-        for (int i = 0; i < numberOfTrashToSpawn; i++)
+        for (int i = 0; i < FirstLevelGameManager.Instance.GetNumberOfTrashToSpawn(); i++)
         {
             SpawnTrash();
             yield return new WaitForSeconds(0.5f); // Kurze Wartezeit zwischen den Spawns
@@ -54,8 +53,4 @@ public class TrashSpawner : MonoBehaviour
         canSpawn = true;
     }
 
-    public int GetNumberOfTrashToSpawn()
-    {
-        return this.numberOfTrashToSpawn;
-    }
 }

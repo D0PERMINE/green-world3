@@ -15,8 +15,11 @@ public class FirstLevelGameManager : MonoBehaviour
     [SerializeField] int score = 0;
     [SerializeField] int pointsForRightAnswer = 10;
     [SerializeField] int pointsForWrongAnswer = 5;
-    [SerializeField] bool wasFirstQuestSolved = false;
+    public bool wasFirstQuestSolved = false;
     [SerializeField] DoorController doorController;
+    [SerializeField] int collectedTrash = 0;
+    [SerializeField] int numberOfTrashToSpawn = 1;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -82,6 +85,7 @@ public class FirstLevelGameManager : MonoBehaviour
     public void EndFirstLevel()
     {
         endingStory.SetActive(true);
+        // show tree as achievment 
         GameStateHandler.Instance.GameState = GameState.endOfFirstQuest;
         StartCoroutine(ShowEndScene());
     }
@@ -89,8 +93,22 @@ public class FirstLevelGameManager : MonoBehaviour
     IEnumerator ShowEndScene()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        yield return new WaitForSeconds(introTime*2);
+        yield return new WaitForSeconds(introTime);
         SceneManager.LoadScene(nextSceneIndex);
 
+    }
+
+    public void UpdateCollectedTrash()
+    {
+        collectedTrash++;
+        if (collectedTrash >= numberOfTrashToSpawn)
+        {     
+            OnSolvedFirstQuest();
+        }
+    }
+
+    public int  GetNumberOfTrashToSpawn()
+    {
+        return numberOfTrashToSpawn;
     }
 }

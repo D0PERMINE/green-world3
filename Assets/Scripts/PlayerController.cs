@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Punkte hinzufügen
                 FirstLevelGameManager.Instance.UpdateScrore(true);
+                
                 Destroy(heldTrash);
 
             } else if (!correctTrashType && onCollisionWithTashBin)
@@ -97,8 +98,9 @@ public class PlayerController : MonoBehaviour
             }
             pickUpAndDropItemAudio.Play();
             heldTrash = null;
-
             if(selectedTrashBin != null) { selectedTrashBin.glowEffect.TriggerGlow();}
+
+            FirstLevelGameManager.Instance.UpdateCollectedTrash();
         }
     }
 

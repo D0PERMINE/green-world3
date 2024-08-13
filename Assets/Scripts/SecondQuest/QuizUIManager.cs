@@ -42,10 +42,12 @@ public class QuizUIManager : MonoBehaviour
         if(rightOptionId == selectedOption.GetOptionId())
         {
             Debug.Log("Was right option selected");
+            SecondLevelGameManager.Instance.UpdateScrore(true);
         }
         else
         {
             Debug.Log("Was wrong option selected");
+            SecondLevelGameManager.Instance.UpdateScrore(false);
         }
         UpdateQuiz();
     }
@@ -76,6 +78,7 @@ public class QuizUIManager : MonoBehaviour
         else
         {
             endOfQuiz = true;
+            SecondLevelGameManager.Instance.EndFirstLevel();
         }
 
     }

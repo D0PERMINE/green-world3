@@ -43,7 +43,7 @@ public class TrashBinManager : MonoBehaviour
 
     private void KeepTrackOfCollectedTrashAmount()
     {
-        if (collectedTrash >= trashSpawner.GetNumberOfTrashToSpawn() - 8)
+        if (collectedTrash >= FirstLevelGameManager.Instance.GetNumberOfTrashToSpawn() - 8)
         {
             allTrashCollected = true;
             FirstLevelGameManager.Instance.OnSolvedFirstQuest();
