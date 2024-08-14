@@ -66,36 +66,44 @@ public class TrashBin : MonoBehaviour
             }
         }
     }
-            //if (playerController.heldTrash != null)
-            //{ }
-            //Debug.Log("1");
-            //if (other.CompareTag("Trash"))
-            //{
-            //    Debug.Log("2");
-            //    var trashType = other.GetComponent<Trash>().trashType;
-            //    var binType = this.gameObject.GetComponent<TrashBin>().binType;
 
-            //    if (binType == trashType)
-            //    {
-            //        Debug.Log("true");
-            //        playerController.correctTrashType = true;
-            //    }
-            //    else
-            //    {
-            //        Debug.Log("false");
-            //        playerController.correctTrashType = false;
-            //    }
-            //    playerController.SetTrashBinType(binType);
-
-            //    playerController.onCollisionWithTashBin = true;
-            //}
-            // }
-       // }
-
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        playerController.onCollisionWithTashBin = false;
+        if (collision.gameObject.GetComponent<PlayerController>())
+        {
+            playerController.onCollisionWithTashBin = false;
+            playerController.selectedTrashBin = null;
+   
+        }
     }
+
+     
+        
+        //if (playerController.heldTrash != null)
+        //{ }
+        //Debug.Log("1");
+        //if (other.CompareTag("Trash"))
+        //{
+        //    Debug.Log("2");
+        //    var trashType = other.GetComponent<Trash>().trashType;
+        //    var binType = this.gameObject.GetComponent<TrashBin>().binType;
+
+        //    if (binType == trashType)
+        //    {
+        //        Debug.Log("true");
+        //        playerController.correctTrashType = true;
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("false");
+        //        playerController.correctTrashType = false;
+        //    }
+        //    playerController.SetTrashBinType(binType);
+
+        //    playerController.onCollisionWithTashBin = true;
+        //}
+        // }
+        // }
 
 
 }

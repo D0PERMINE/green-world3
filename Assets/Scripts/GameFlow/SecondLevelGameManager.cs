@@ -14,6 +14,7 @@ public class SecondLevelGameManager : MonoBehaviour
     [SerializeField] int pointsForRightAnswer = 10;
     [SerializeField] int pointsForWrongAnswer = 5;
     [SerializeField] bool wasSecondQuestSolved = false;
+    [SerializeField] QuizQuestionsGenerator quizQuestionsGenerator;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -33,6 +34,7 @@ public class SecondLevelGameManager : MonoBehaviour
         endingStory.SetActive(false);
         introStory.SetActive(true);
         StartCoroutine(ShowIntroStory());
+        BarsProgressManager.Instance.SetMaxQuizBarScore(quizQuestionsGenerator.GetQuizQuestionsArray().Length);
     }
 
     IEnumerator ShowIntroStory()
@@ -53,7 +55,7 @@ public class SecondLevelGameManager : MonoBehaviour
             score -= pointsForWrongAnswer;
         }
         ScoreManager.Instance.UpdateUIPoints(score, isRight);
-
+        BarsProgressManager.Instance.UpdateQuizhBarScore(score);
 
     }
 

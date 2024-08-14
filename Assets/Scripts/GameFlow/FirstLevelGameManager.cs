@@ -39,6 +39,7 @@ public class FirstLevelGameManager : MonoBehaviour
         introControls.SetActive(true);
         endingStory.SetActive(false);
         introStory.SetActive(false);
+        BarsProgressManager.Instance.SetMaxTrashBarScore(numberOfTrashToSpawn);
     }
 
     private void Update()
@@ -70,6 +71,8 @@ public class FirstLevelGameManager : MonoBehaviour
         {
             score -= pointsForWrongAnswer;
         }
+
+        BarsProgressManager.Instance.UpdateTrashBarScore(score);
         ScoreManager.Instance.UpdateUIPoints(score, isRight);
 
 

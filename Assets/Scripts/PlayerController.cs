@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         if (heldTrash != null)
         {
+            if (selectedTrashBin != null && heldTrash != null) { selectedTrashBin.glowEffect.TriggerGlow(); }
             var trashRb = heldTrash.GetComponent<Rigidbody2D>();
             if (trashRb != null)
             {
@@ -98,8 +99,6 @@ public class PlayerController : MonoBehaviour
             }
             pickUpAndDropItemAudio.Play();
             heldTrash = null;
-            if(selectedTrashBin != null) { selectedTrashBin.glowEffect.TriggerGlow();}
-
             FirstLevelGameManager.Instance.UpdateCollectedTrash();
         }
     }
