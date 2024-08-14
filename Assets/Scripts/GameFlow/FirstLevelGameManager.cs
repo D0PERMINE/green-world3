@@ -19,7 +19,8 @@ public class FirstLevelGameManager : MonoBehaviour
     [SerializeField] DoorController doorController;
     [SerializeField] int collectedTrash = 0;
     [SerializeField] int numberOfTrashToSpawn = 1;
-
+    [SerializeField] int timerInSec = 10;
+    [SerializeField] WaterTankHandler waterTankHandler;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -70,6 +71,7 @@ public class FirstLevelGameManager : MonoBehaviour
         else
         {
             score -= pointsForWrongAnswer;
+            waterTankHandler.BlinkRed();
         }
 
         BarsProgressManager.Instance.UpdateTrashBarScore(score);

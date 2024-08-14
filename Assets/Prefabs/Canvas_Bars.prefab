@@ -52,6 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trashBarFilling: {fileID: 3146552044979314554}
   quizBarFilling: {fileID: 5563742014742817665}
+  maxTrashBarScore: 0
+  maxQuizBarScore: 0
+  percentageOfSingleCollectedTrash: 0
+  percentageOfSingleQuestion: 0
 --- !u!1 &788415166121304227
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,13 +332,13 @@ RectTransform:
   m_Children:
   - {fileID: 8327129645376199652}
   - {fileID: 3514467810426111894}
+  - {fileID: 8232498634895828128}
   - {fileID: 4961452913238222871}
   - {fileID: 1845185886267237974}
   - {fileID: 439495598071437678}
   - {fileID: 1159136533144032344}
   - {fileID: 6859873709406054770}
   - {fileID: 5005003245478854054}
-  - {fileID: 8232498634895828128}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2190,6 +2194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8232498634895828128}
   - component: {fileID: 2574791431370212797}
+  - component: {fileID: 4910106793899075794}
   m_Layer: 5
   m_Name: WaterTank
   m_TagString: Untagged
@@ -2226,3 +2231,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9014669625256204593}
   m_CullTransparentMesh: 1
+--- !u!114 &4910106793899075794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014669625256204593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d974281163c30ff45ad9bb1d1cbb0bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

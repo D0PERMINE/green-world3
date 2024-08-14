@@ -1120,6 +1120,7 @@ MonoBehaviour:
   doorController: {fileID: 1584279000}
   collectedTrash: 0
   numberOfTrashToSpawn: 10
+  timerInSec: 10
 --- !u!4 &338618290
 Transform:
   m_ObjectHideFlags: 0
@@ -32585,15 +32586,84 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Bars
       objectReference: {fileID: 0}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: blinkColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: blinkColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: blinkColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: blinkColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: addWaterAudio
+      value: 
+      objectReference: {fileID: 778099249242964086}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: waterBarImage
+      value: 
+      objectReference: {fileID: 778099249242964087}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: originalColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: originalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: originalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910106793899075794, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: originalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324929643223221923, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324929643223221923, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5563742014742817665, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
       propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5852752882487273833, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2058195227293561669, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+--- !u!82 &778099249242964086 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2330011852022363736, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+  m_PrefabInstance: {fileID: 778099249242964084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &778099249242964087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5324929643223221923, guid: 248918f7977ba6749816dbc47f9021c6, type: 3}
+  m_PrefabInstance: {fileID: 778099249242964084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &789833977675592993
 GameObject:
   m_ObjectHideFlags: 0
