@@ -69,8 +69,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 122f5562a31d1184d80d1e176178e725, type: 2}
+  m_sharedMaterial: {fileID: 1234815189341524604, guid: 122f5562a31d1184d80d1e176178e725, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trash: 1
   trashType: Plastik
+  title: {fileID: 526269504291474916}
 --- !u!61 &-7776532404941433316
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trash: 2
   trashType: Bio
+  title: {fileID: 3393684830520222954}
 --- !u!61 &3031265076565659936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -241,8 +242,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Banane
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 122f5562a31d1184d80d1e176178e725, type: 2}
+  m_sharedMaterial: {fileID: 1234815189341524604, guid: 122f5562a31d1184d80d1e176178e725, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

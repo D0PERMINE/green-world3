@@ -106,13 +106,11 @@ public class WaterTankHandler : MonoBehaviour
 
     IEnumerator Timer()
     {
-        float normalizedTime = 0;
         while (normalizedWaterTime <= 1f)
         {
 
             normalizedWaterTime += Time.deltaTime / levelDuration;
             waterBarImage.fillAmount -= Time.deltaTime / levelDuration;
-            Debug.Log("normalizedWaterTime: " + normalizedWaterTime);
             yield return null;
         }
 
