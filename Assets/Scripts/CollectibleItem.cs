@@ -12,7 +12,7 @@ public class CollectibleItem : MonoBehaviour
             WaterTankHandler waterBarController = FindObjectOfType<WaterTankHandler>();
             if (waterBarController != null)
             {
-                waterBarController.AddWater(30f);
+                waterBarController.AddWater();
             }
             else
             {

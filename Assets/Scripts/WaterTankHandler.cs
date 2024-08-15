@@ -10,17 +10,47 @@ public class WaterTankHandler : MonoBehaviour
     [SerializeField] Color originalColor; // Ursprüngliche Farbe des Balkens
     [SerializeField] Color blinkColor; // Farbe, in die geblinkt werden soll
 
-    private float currentWater; // Aktuelles Wasser
+    [SerializeField] float currentWater; // Aktuelles Wasser
+    [SerializeField] float maxWater = 1f; // Aktuelles Wasser
     float blinkTimer;
+    [SerializeField] float levelDuration; 
+    [SerializeField] float blinkingDuration = 1;
     [SerializeField] bool isBlinking = false;
+    [SerializeField] float addedWaterAmount = 0.25f;
+    [SerializeField] float substractedWaterAmount = 0.01f;
+    [SerializeField] float normalizedWaterTime = 0;
+    [SerializeField] GameObject gameManager;
     private void Start()
     {
         originalColor = waterBarImage.color;
+        currentWater = maxWater;
+        SetLevelDuration();
+        WaterTimer();
+        
     }
     private void Update()
     {
-        //RedBlink();
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            AddWater();
+        }
     }
+
+    void SetLevelDuration()
+    {
+        if (gameManager.GetComponent<FirstLevelGameManager>() != null)
+        {
+            levelDuration = gameManager.GetComponent<FirstLevelGameManager>().GetTimer();
+        }
+        else if (gameManager.GetComponent<SecondLevelGameManager>() != null)
+        {
+            levelDuration = gameManager.GetComponent<SecondLevelGameManager>().GetTimer();
+        }
+        else
+        {
+            Debug.Log("Game Manager error ");
+        }
+    } 
     public void BlinkRed()
     {
         StartCoroutine(Blink());
@@ -28,12 +58,16 @@ public class WaterTankHandler : MonoBehaviour
 
     IEnumerator Blink()
     {
-        isBlinking = true;
-        
-        Blinking();
-        
-        yield return new WaitForSeconds(3);
-        isBlinking = false;
+
+        float normalizedTime = 0;
+        while (normalizedTime <= 1f)
+        {
+            Blinking();
+            normalizedTime += Time.deltaTime / blinkingDuration;
+            yield return null;
+        }
+
+        waterBarImage.color = originalColor;
     }
 
     void Blinking()
@@ -48,13 +82,77 @@ public class WaterTankHandler : MonoBehaviour
         waterBarImage.color = lerpedColor;
     }
 
-    public void AddWater(float amount)
+    public void AddWater()
     {
-        currentWater += amount;
+        waterBarImage.fillAmount += addedWaterAmount;
         addWaterAudio.Play();
-        if (currentWater > 100)
+        normalizedWaterTime -= addedWaterAmount;
+        if(normalizedWaterTime < 0)
         {
-            currentWater = 100;
+            normalizedWaterTime = 0;
         }
     }
+
+    public void SubtractWater()
+    {
+        waterBarImage.fillAmount -= substractedWaterAmount;
+        addWaterAudio.Play();
+        normalizedWaterTime += substractedWaterAmount;
+    }
+    public void WaterTimer()
+    {
+        StartCoroutine(Timer());
+    }
+
+    IEnumerator Timer()
+    {
+        float normalizedTime = 0;
+        while (normalizedWaterTime <= 1f)
+        {
+
+            normalizedWaterTime += Time.deltaTime / levelDuration;
+            waterBarImage.fillAmount -= Time.deltaTime / levelDuration;
+            Debug.Log("normalizedWaterTime: " + normalizedWaterTime);
+            yield return null;
+        }
+
+        Debug.Log("Lost");
+        ShowLoseScreen();
+    }
+
+    void ShowLoseScreen()
+    {
+        if (gameManager.GetComponent<FirstLevelGameManager>() != null)
+        {
+            gameManager.GetComponent<FirstLevelGameManager>().ShowLoseScreen();
+        }
+        else if (gameManager.GetComponent<SecondLevelGameManager>() != null)
+        {
+            gameManager.GetComponent<SecondLevelGameManager>().ShowLoseScreen();
+        }
+        else
+        {
+            Debug.Log("Game Manager error ");
+        }
+    }
+    //IEnumerator Timer()
+    //{
+    //    // leverDuration 100% 15 sec
+    //    // 15/100 - 1% /100
+    //    float normalizedTime = 0;
+    //    while (normalizedTime <= 1f)
+    //    {
+    //        currentWater -= 0.1f;
+    //        if (currentWater < 0)
+    //        {
+    //            currentWater = 0;
+    //        }
+
+    //        normalizedTime += Time.deltaTime/ levelDuration;
+    //        waterBarImage.fillAmount = currentWater / maxWater;
+    //        yield return null;
+    //    }
+
+    //    waterBarImage.color = originalColor;
+    //}
 }
