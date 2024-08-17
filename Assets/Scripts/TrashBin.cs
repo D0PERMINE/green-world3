@@ -5,7 +5,8 @@ public enum TrashType
 {
     residual,
     plastic,
-    bio
+    bio,
+    paper
 }
 public class TrashBin : MonoBehaviour
 {

@@ -34,6 +34,7 @@ public class SecondLevelGameManager : MonoBehaviour
     private void Start()
     {
         GameStateHandler.Instance.GameState = GameState.game;
+        waterTankHandler.StartWaterTimer();
         endingStory.SetActive(false);
         introStory.SetActive(true);
         loseStory.SetActive(false);

@@ -4,6 +4,7 @@ using TMPro;
 
 public class NPCDialogue : MonoBehaviour
 {
+    [SerializeField] GameObject questionSymbol;
     public TMP_Text npcNameText; // TextMeshPro Text-Objekt für den NPC-Namen
     public TMP_Text dialogueText; // TextMeshPro Text-Objekt für die Anzeige des Dialogtextes
     public GameObject dialogueBox; // Das UI-Element, das den Dialogtext enthält
@@ -28,6 +29,7 @@ public class NPCDialogue : MonoBehaviour
         dialogueText.text = "";
         npcNameText.text = "";
         dialogueBox.SetActive(false);
+        questionSymbol.SetActive(false);
     }
 
     void Update()
@@ -155,6 +157,7 @@ public class NPCDialogue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            questionSymbol.SetActive(true);
             playerInRange = true;
         }
     }
@@ -163,6 +166,7 @@ public class NPCDialogue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            questionSymbol.SetActive(false);
             playerInRange = false;
         }
     }

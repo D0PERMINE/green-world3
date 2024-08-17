@@ -25,7 +25,6 @@ public class WaterTankHandler : MonoBehaviour
         originalColor = waterBarImage.color;
         currentWater = maxWater;
         SetLevelDuration();
-        WaterTimer();
         
     }
     private void Update()
@@ -99,7 +98,7 @@ public class WaterTankHandler : MonoBehaviour
         addWaterAudio.Play();
         normalizedWaterTime += substractedWaterAmount;
     }
-    public void WaterTimer()
+    public void StartWaterTimer()
     {
         StartCoroutine(Timer());
     }

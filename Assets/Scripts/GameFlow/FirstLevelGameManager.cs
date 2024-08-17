@@ -65,6 +65,7 @@ public class FirstLevelGameManager : MonoBehaviour
         introStory.SetActive(true);
         yield return new WaitForSeconds(introTime);
         GameStateHandler.Instance.GameState = GameState.game;
+        waterTankHandler.StartWaterTimer();
         introStory.SetActive(false);
     }
 
