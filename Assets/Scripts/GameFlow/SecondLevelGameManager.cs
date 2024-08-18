@@ -34,7 +34,7 @@ public class SecondLevelGameManager : MonoBehaviour
     private void Start()
     {
         GameStateHandler.Instance.GameState = GameState.game;
-        waterTankHandler.StartWaterTimer();
+       
         endingStory.SetActive(false);
         introStory.SetActive(true);
         loseStory.SetActive(false);
@@ -47,6 +47,7 @@ public class SecondLevelGameManager : MonoBehaviour
         introStory.SetActive(true);
         yield return new WaitForSeconds(introTime);
         introStory.SetActive(false);
+        waterTankHandler.StartWaterTimer();
     }
 
     public void UpdateScrore(bool isRight)

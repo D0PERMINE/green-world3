@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         if (heldTrash != null)
         {
-            if (selectedTrashBin != null && heldTrash != null) { selectedTrashBin.glowEffect.TriggerGlow(); }
+            if (selectedTrashBin != null && heldTrash != null) { selectedTrashBin.glowEffect.TriggerGlow(selectedTrashBin.glowEffect.maxGlowStrength); }
             var trashRb = heldTrash.GetComponent<Rigidbody2D>();
             if (trashRb != null)
             {

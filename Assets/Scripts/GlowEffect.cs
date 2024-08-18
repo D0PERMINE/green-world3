@@ -8,6 +8,7 @@ public class GlowEffect : MonoBehaviour
 
     [Range(0, 1)]
     public float maxGlowStrength = 0.5f; // Maximale Glow-Stärke, die du anpassen kannst
+    public float glowStrengthOnSelection = 0.5f; // Maximale Glow-Stärke, die du anpassen kannst
     public float glowDuration = 0.25f; // Dauer des Glow-Effekts in Sekunden
     public Color glowColor = Color.white; // Glow-Farbe, die du im Inspector einstellen kannst
 
@@ -18,25 +19,25 @@ public class GlowEffect : MonoBehaviour
         material.SetColor("_GlowColor", glowColor); // Setze die Glow-Farbe auf die gewünschte Farbe
     }
 
-    public void TriggerGlow()
+    public void TriggerGlow(float glow)
     {
         if (!isGlowing)
         {
-            StartCoroutine(GlowCoroutine());
+            StartCoroutine(GlowCoroutine(glow));
         }
     }
 
-    private IEnumerator GlowCoroutine()
+    private IEnumerator GlowCoroutine(float glow)
     {
         isGlowing = true;
         float glowStrength = 0.0f;
         float halfDuration = glowDuration / 2.0f;
 
         // Aufglühen
-        while (glowStrength < maxGlowStrength)
+        while (glowStrength < glow)
         {
             glowStrength += Time.deltaTime / halfDuration;
-            material.SetFloat("_GlowStrength", Mathf.Min(glowStrength, maxGlowStrength));
+            material.SetFloat("_GlowStrength", Mathf.Min(glowStrength, glow));
             yield return null;
         }
 

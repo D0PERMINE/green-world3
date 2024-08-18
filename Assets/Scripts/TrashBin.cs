@@ -23,16 +23,10 @@ public class TrashBin : MonoBehaviour
        // playerController = FindObjectOfType<PlayerController>();
     }
 
-    //private void Update()
-    //{
-    //    if (trashDropped)
-    //    {
-    //        glowEffect.TriggerGlow();
-    //        trashDropped = false;
-           
-    //    }
-    //}
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        glowEffect.TriggerGlow(glowEffect.glowStrengthOnSelection);
+    }
     public void SetTrashDropped(bool trashDropped)
     {
         this.trashDropped = trashDropped;
