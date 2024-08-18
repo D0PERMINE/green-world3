@@ -4,7 +4,7 @@ using TMPro;
 public class Trash : MonoBehaviour
 {
     public TrashType trash;
-    public string trashType;
+    //public string trashType;
     [SerializeField] GameObject title;
 
     private void Start()

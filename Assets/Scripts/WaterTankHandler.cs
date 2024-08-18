@@ -13,7 +13,7 @@ public class WaterTankHandler : MonoBehaviour
     [SerializeField] float currentWater; // Aktuelles Wasser
     [SerializeField] float maxWater = 1f; // Aktuelles Wasser
     float blinkTimer;
-    [SerializeField] float levelDuration; 
+    float levelDuration = 1; 
     [SerializeField] float blinkingDuration = 1;
     [SerializeField] bool isBlinking = false;
     [SerializeField] float addedWaterAmount = 0.25f;
@@ -40,10 +40,12 @@ public class WaterTankHandler : MonoBehaviour
         if (gameManager.GetComponent<FirstLevelGameManager>() != null)
         {
             levelDuration = gameManager.GetComponent<FirstLevelGameManager>().GetTimer();
+            Debug.Log("Game Manager FirstLevelGameManager ");
         }
         else if (gameManager.GetComponent<SecondLevelGameManager>() != null)
         {
             levelDuration = gameManager.GetComponent<SecondLevelGameManager>().GetTimer();
+            Debug.Log("Game Manager SecondLevelGameManager ");
         }
         else
         {

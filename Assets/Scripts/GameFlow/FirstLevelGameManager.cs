@@ -84,6 +84,7 @@ public class FirstLevelGameManager : MonoBehaviour
 
         BarsProgressManager.Instance.UpdateTrashBarScore(score);
         ScoreManager.Instance.UpdateUIPoints(score, isRight);
+        // ui points to update here
 
 
     }
@@ -116,6 +117,7 @@ public class FirstLevelGameManager : MonoBehaviour
         collectedTrash++;
         if (collectedTrash >= numberOfTrashToSpawn)
         {     
+            // it's solved
             OnSolvedFirstQuest();
         }
     }

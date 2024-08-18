@@ -1777,7 +1777,7 @@ MonoBehaviour:
   wasFirstQuestSolved: 0
   doorController: {fileID: 1584279000}
   collectedTrash: 0
-  numberOfTrashToSpawn: 10
+  numberOfTrashToSpawn: 1
   timerInSec: 60
   waterTankHandler: {fileID: 8291833728266132176}
 --- !u!4 &338618290
@@ -39246,23 +39246,6 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 12.499998}
   m_SizeDelta: {x: 475.374, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5944218402599565938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6349914800510992450}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a13fcaa59d51904ba0753027c92f2fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterBarImage: {fileID: 6397774325953572501}
-  maxWater: 100
-  blinkSpeedNormal: 5
-  blinkSpeedFast: 0
-  addWaterAudio: {fileID: 8372818666892294265}
 --- !u!114 &6038961194546361530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39519,7 +39502,6 @@ GameObject:
   - component: {fileID: 1448143011321381431}
   - component: {fileID: 1989456063878901701}
   - component: {fileID: 6397774325953572501}
-  - component: {fileID: 5944218402599565938}
   - component: {fileID: 8372818666892294265}
   m_Layer: 5
   m_Name: Water

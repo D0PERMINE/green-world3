@@ -1425,13 +1425,13 @@ MonoBehaviour:
   introStory: {fileID: 4888911984651635329}
   endingStory: {fileID: 1730572922}
   loseStory: {fileID: 6726520600144137642}
-  introTime: 3
+  introTime: 1
   score: 0
   pointsForRightAnswer: 10
   pointsForWrongAnswer: 5
   wasSecondQuestSolved: 0
   quizQuestionsGenerator: {fileID: 2125765665}
-  timerInSec: 30
+  timerInSec: 60
   waterTankHandler: {fileID: 4910106793541452498}
 --- !u!4 &325879770
 Transform:
@@ -36901,7 +36901,6 @@ GameObject:
   - component: {fileID: 1517619173034957033}
   - component: {fileID: 7093640430302375060}
   - component: {fileID: 5324929642775702691}
-  - component: {fileID: 5852752882828264297}
   - component: {fileID: 2330011851715075160}
   m_Layer: 5
   m_Name: Water
@@ -37235,7 +37234,6 @@ MonoBehaviour:
   blinkColor: {r: 1, g: 0, b: 0, a: 1}
   currentWater: 0
   maxWater: 1
-  levelDuration: 0
   blinkingDuration: 1
   isBlinking: 0
   addedWaterAmount: 0.25
@@ -37560,23 +37558,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &5852752882828264297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3644968446252720171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a13fcaa59d51904ba0753027c92f2fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterBarImage: {fileID: 5324929642775702691}
-  maxWater: 100
-  blinkSpeedNormal: 5
-  blinkSpeedFast: 0
-  addWaterAudio: {fileID: 2330011851715075160}
 --- !u!1 &5874455519350369289
 GameObject:
   m_ObjectHideFlags: 0
