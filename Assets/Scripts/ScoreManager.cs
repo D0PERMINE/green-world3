@@ -23,20 +23,19 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void AddScore(int points)
+    public void UpdateUIPoints(int score, bool isRight)
     {
-        score += points;
-        PlayAudioScore(points);
+        PlayAudioScore(isRight);
         scoreText.text = "Score: " + score;
     }
 
-    private void PlayAudioScore(int points)
+    private void PlayAudioScore(bool isRight)
     {
-        if (points > 0)
+        if (isRight)
         {
             correctAudio.Play();
         } 
-        else if( points < 0)
+        else 
         {
             incorrectAudio.Play();
         }

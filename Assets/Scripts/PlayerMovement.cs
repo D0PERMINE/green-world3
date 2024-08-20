@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameStateHandler.Instance.GameState != GameState.game) { return; }
         Move();
         FoodStepAudioOn();
 
@@ -62,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameStateHandler.Instance.GameState != GameState.game) { SetMovementInputToZero(); return; }
         // movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }

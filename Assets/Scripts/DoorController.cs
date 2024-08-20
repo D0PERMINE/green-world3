@@ -6,38 +6,40 @@ public class DoorController : MonoBehaviour
     [SerializeField] private float moveDistance; // Die Entfernung, die die Tür nach oben bewegt werden soll
     [SerializeField] private float moveSpeed; // Die Geschwindigkeit, mit der die Tür sich bewegt
 
-    private bool isOpening = false; // Zustand, ob die Tür sich öffnet oder nicht
+    [SerializeField] bool isOpening = false; // Zustand, ob die Tür sich öffnet oder nicht
     private Vector3 initialPosition; // Die ursprüngliche Position der Tür
-    private Vector3 targetPosition; // Die Zielposition der Tür
-    public TrashBinManager trashBinManager;
+    [SerializeField] Transform targetPosition; // Die Zielposition der Tür
 
     void Start()
     {
         // Speichern Sie die ursprüngliche Position der Tür
-        initialPosition = transform.position;
+        //  initialPosition = transform.position;
         // Berechnen Sie die Zielposition
-        targetPosition = new Vector3(initialPosition.x, initialPosition.y + moveDistance, initialPosition.z);
+        //  targetPosition = new Vector3(initialPosition.x, initialPosition.y + moveDistance, initialPosition.z);
     }
 
-    void Update()
+    private void Update()
     {
-        // Überprüfen Sie, ob die Leertaste gedrückt wurde
-        if (trashBinManager.GetAllTrashCollected())
+        if (FirstLevelGameManager.Instance.wasFirstQuestSolved)
         {
-            isOpening = true; // Setzen Sie den Zustand auf Öffnen
+            OpenDoor();
+        }
+    }
+    public void OpenDoor()
+    {
+        if (transform.position.y < targetPosition.transform.position.y)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition.transform.position, moveSpeed * Time.deltaTime);
+
         }
 
-        // Bewegen Sie die Tür nach oben, wenn isOpening true ist
-        if (isOpening)
-        {
-            // Bewegen Sie die Tür schrittweise zur Zielposition
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+    }
 
-            // Überprüfen Sie, ob die Tür die Zielposition erreicht hat
-            if (transform.position == targetPosition)
-            {
-                isOpening = false; // Beenden Sie die Bewegung
-            }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            FirstLevelGameManager.Instance.EndFirstLevel();
         }
     }
 }

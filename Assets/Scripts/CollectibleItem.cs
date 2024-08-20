@@ -9,14 +9,14 @@ public class CollectibleItem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Finde den WaterBarController in der Szene und rufe AddWater() auf
-            WaterBarController waterBarController = FindObjectOfType<WaterBarController>();
+            WaterTankHandler waterBarController = FindObjectOfType<WaterTankHandler>();
             if (waterBarController != null)
             {
-                waterBarController.AddWater(30f);
+                waterBarController.AddWater();
             }
             else
             {
-                Debug.LogError("WaterBarController nicht gefunden!");
+                Debug.LogError("WaterTankHandler nicht gefunden!");
             }
 
             // Zerstöre das WaterBottle-Objekt nach dem Einsammeln

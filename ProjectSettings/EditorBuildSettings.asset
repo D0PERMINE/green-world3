@@ -9,12 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b5b95d25dab5aaf41a95218b86eb92a6
   - enabled: 1
+    path: Assets/Scenes/Revision_Level_01 1.unity
+    guid: c41c7cea19b9eeb43b3de3f6f9761904
+  - enabled: 1
+    path: Assets/Scenes/Revision_Level_02.unity
+    guid: 7a87cb094134a68429137fe3b42a1e14
+  - enabled: 0
     path: Assets/Scenes/Level_01.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Achievement.unity
     guid: b51eed8fb91f46d40afef67cbe230934
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/City.unity
     guid: c3e01a9fed9e814488fa3c0cfa3228b4
   m_configObjects: {}

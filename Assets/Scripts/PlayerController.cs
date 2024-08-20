@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
 
     public GameObject heldTrash = null;
+    public bool isDroppingTrash = false;
+    public TrashBin selectedTrashBin = null;
 
     public Transform holdPosition;
     public float holdDistance = 1f; // Distance in front of the character to hold the trash
@@ -14,11 +16,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastMovementDirection = Vector2.up; // Default to up
     public bool correctTrashType = false;
     public bool onCollisionWithTashBin = false;
-    public TrashBin[] trashBin;
+    //public TrashBin[] trashBins;
     private int trashBinType;
 
     public AudioSource pickUpAndDropItemAudio;
-
 
 
     void Start()
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         //movement.x = Input.GetAxis("Horizontal");
         //movement.y = Input.GetAxis("Vertical");
+        if(GameStateHandler.Instance.GameState != GameState.game) { return; }
 
         HoldDistance();
 
@@ -76,6 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         if (heldTrash != null)
         {
+            if (selectedTrashBin != null && heldTrash != null) { selectedTrashBin.glowEffect.TriggerGlow(selectedTrashBin.glowEffect.maxGlowStrength); }
             var trashRb = heldTrash.GetComponent<Rigidbody2D>();
             if (trashRb != null)
             {
@@ -84,18 +87,19 @@ public class PlayerController : MonoBehaviour
             if (correctTrashType && onCollisionWithTashBin)
             {
                 // Punkte hinzufügen
-                ScoreManager.Instance.AddScore(10);
-                trashBin[trashBinType].SetTrashDropped(true);
+                FirstLevelGameManager.Instance.UpdateScrore(true);
+                
                 Destroy(heldTrash);
+
             } else if (!correctTrashType && onCollisionWithTashBin)
             {
                 // Minuspunkte hinzufügen
-                ScoreManager.Instance.AddScore(-5);
-                trashBin[trashBinType].SetTrashDropped(true);
+                FirstLevelGameManager.Instance.UpdateScrore(false);
                 Destroy(heldTrash);
             }
             pickUpAndDropItemAudio.Play();
             heldTrash = null;
+            FirstLevelGameManager.Instance.UpdateCollectedTrash();
         }
     }
 
@@ -141,20 +145,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SetTrashBinType(string trashBinType)
-    {
-        if (trashBinType == "Rest")
-        {
-            this.trashBinType = 0;
-        } 
-        else if (trashBinType == "Plastik")
-        {
-            this.trashBinType = 1;
-        }
-        else if (trashBinType == "Bio")
-        {
-            this.trashBinType = 2;
-        }
-    }
+    //public void SetTrashBinType(string trashBinType)
+    //{
+    //    if (trashBinType == "Rest")
+    //    {
+    //        this.trashBinType = 0;
+    //    } 
+    //    else if (trashBinType == "Plastik")
+    //    {
+    //        this.trashBinType = 1;
+    //    }
+    //    else if (trashBinType == "Bio")
+    //    {
+    //        this.trashBinType = 2;
+    //    }
+    //}
 
 }

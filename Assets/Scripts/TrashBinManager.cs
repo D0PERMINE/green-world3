@@ -5,8 +5,8 @@ using UnityEngine;
 public class TrashBinManager : MonoBehaviour
 {
 
-    private bool allTrashCollected;
-    private int collectedTrash;
+    [SerializeField] bool allTrashCollected;
+    [SerializeField] int collectedTrash;
     public TrashSpawner trashSpawner;
 
     // Start is called before the first frame update
@@ -43,9 +43,10 @@ public class TrashBinManager : MonoBehaviour
 
     private void KeepTrackOfCollectedTrashAmount()
     {
-        if (collectedTrash >= trashSpawner.GetNumberOfTrashToSpawn() - 8)
+        if (collectedTrash >= FirstLevelGameManager.Instance.GetNumberOfTrashToSpawn() - 8)
         {
             allTrashCollected = true;
+            FirstLevelGameManager.Instance.OnSolvedFirstQuest();
         }
     }
 
