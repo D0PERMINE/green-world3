@@ -26,11 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1881701070812580707, guid: f8dbe86e4da48e8408071353fa00a71c, type: 3}
       propertyPath: m_text
-      value: Wassermelone
+      value: Karton
       objectReference: {fileID: 0}
     - target: {fileID: 3049610302041736819, guid: f8dbe86e4da48e8408071353fa00a71c, type: 3}
       propertyPath: m_Name
-      value: TrashItemBase Variant 2
+      value: Karton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3288522579656765490, guid: f8dbe86e4da48e8408071353fa00a71c, type: 3}
+      propertyPath: trash
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4585445381688076439, guid: f8dbe86e4da48e8408071353fa00a71c, type: 3}
       propertyPath: m_SizeDelta.x
@@ -103,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 7767208392168595756, guid: f8dbe86e4da48e8408071353fa00a71c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0cd8b25201029cb469673145de47f111, type: 3}
+      objectReference: {fileID: 21300000, guid: 3da362f36bc3c964f80272e22e7efe41, type: 3}
     - target: {fileID: 7767208392168595756, guid: f8dbe86e4da48e8408071353fa00a71c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
