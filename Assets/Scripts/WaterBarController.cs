@@ -43,9 +43,11 @@ public class WaterBarController : MonoBehaviour
         {
             Debug.LogError("Water Bar Image is not assigned.");
         }
-
+        
         // Reduziere das Wasser mit der Zeit
         currentWater -= Time.deltaTime * 5; // Wasser reduziert sich um 5 Einheiten pro Sekunde
+        
+        
         if (currentWater < 0)
         {
             currentWater = 0;

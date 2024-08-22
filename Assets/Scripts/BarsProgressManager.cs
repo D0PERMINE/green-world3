@@ -52,9 +52,18 @@ public class BarsProgressManager : MonoBehaviour
 
     public void UpdateTrashBarScore(int newScore)
     {
-        trashBarScore = newScore;
-        trashBarFilling.fillAmount += (percentageOfSingleCollectedTrash / 100);
+        if (newScore > trashBarScore)
+        {
+            trashBarFilling.fillAmount += (percentageOfSingleCollectedTrash / 100);
+
+        } else if (newScore <= trashBarScore)
+        {
+            trashBarFilling.fillAmount -= (percentageOfSingleCollectedTrash / 100);
+        }
         trashBarAmount = trashBarFilling.fillAmount;
+        trashBarScore = newScore;
+        Debug.Log("trashBarScore: " + trashBarScore);
+        Debug.Log("quizBarScore: " + quizBarScore);
     }
 
     public void UpdateQuizhBarScore(int newScore)

@@ -88,13 +88,14 @@ public class PlayerController : MonoBehaviour
             {
                 // Punkte hinzufügen
                 FirstLevelGameManager.Instance.UpdateScrore(true);
-                
+                Debug.Log("Add points");
                 Destroy(heldTrash);
 
             } else if (!correctTrashType && onCollisionWithTashBin)
             {
                 // Minuspunkte hinzufügen
                 FirstLevelGameManager.Instance.UpdateScrore(false);
+                Debug.Log("Subtract points");
                 Destroy(heldTrash);
             }
             pickUpAndDropItemAudio.Play();

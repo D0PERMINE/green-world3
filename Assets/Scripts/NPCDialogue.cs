@@ -23,6 +23,8 @@ public class NPCDialogue : MonoBehaviour
 
     public PlayerMovement playerMovement; // Referenz zum playerMovement
 
+    [SerializeField] WaterTankHandler waterTankHandler;
+
 
     void Start()
     {
@@ -148,7 +150,8 @@ public class NPCDialogue : MonoBehaviour
             hasCompletedFirstDialogue = true;
             if (trashSpawner != null)
             {
-                trashSpawner.EnableSpawning();
+                trashSpawner.EnableSpawning(); 
+                waterTankHandler.StartWaterTimer();
             }
         }
     }

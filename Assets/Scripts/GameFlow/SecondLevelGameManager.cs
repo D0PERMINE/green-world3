@@ -18,6 +18,7 @@ public class SecondLevelGameManager : MonoBehaviour
     [SerializeField] QuizQuestionsGenerator quizQuestionsGenerator;
     [SerializeField] int timerInSec = 10;
     [SerializeField] WaterTankHandler waterTankHandler;
+    [SerializeField] FadeToTransparentEffect fadeToTransparentEffect;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -33,6 +34,7 @@ public class SecondLevelGameManager : MonoBehaviour
 
     private void Start()
     {
+        fadeToTransparentEffect.StartFadeOut();
         GameStateHandler.Instance.GameState = GameState.game;
        
         endingStory.SetActive(false);
@@ -71,15 +73,17 @@ public class SecondLevelGameManager : MonoBehaviour
     public void EndFirstLevel()
     {
         wasSecondQuestSolved = true;
-        endingStory.SetActive(true);
+        //endingStory.SetActive(true);
         GameStateHandler.Instance.GameState = GameState.endOfSecondQuest;
         StartCoroutine(ShowEndScene());
+
     }
 
     IEnumerator ShowEndScene()
     {
         yield return new WaitForSeconds(introTime);
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
 

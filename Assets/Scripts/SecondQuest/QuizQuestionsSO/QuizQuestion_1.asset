@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda9034065522fd4787bc6c229445226, type: 3}
   m_Name: QuizQuestion_1
   m_EditorClassIdentifier: 
-  Question: 4346654?
-  Description_1: 353636
-  Image_1: {fileID: 21300000, guid: 730bc58dcc4999c4c80dbf3bc3baa0d2, type: 3}
-  Description_2: 457575775
-  Image_2: {fileID: 21300000, guid: 4a0052b9dfd320941a0bdb3ce374ca9d, type: 3}
-  rightOption: 0
+  Question: "Was st\xF6\xDF mehr Co2 aus?"
+  Description_1: 10 Stunden Auto fahren
+  Image_1: {fileID: 21300000, guid: a440958aa7644d04aa8cc9558293b640, type: 3}
+  Description_2: 1 Stunde Flugzeug fliegen
+  Image_2: {fileID: 21300000, guid: 6b01c39ede567de4aa66105b11a86c1a, type: 3}
+  rightOption: 1

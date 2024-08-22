@@ -109,7 +109,6 @@ public class WaterTankHandler : MonoBehaviour
     {
         while (normalizedWaterTime <= 1f)
         {
-
             normalizedWaterTime += Time.deltaTime / levelDuration;
             waterBarImage.fillAmount -= Time.deltaTime / levelDuration;
             yield return null;

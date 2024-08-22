@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda9034065522fd4787bc6c229445226, type: 3}
   m_Name: QuizQuestion_2
   m_EditorClassIdentifier: 
-  Question: gfnffn?
-  Description_1: drhtitriri
-  Image_1: {fileID: 21300000, guid: 82315adf59b8e5e43b78f5149f2f61e2, type: 3}
-  Description_2: dzrtutiti
-  Image_2: {fileID: 21300000, guid: b8d08b940c1acd445879ea31b4563130, type: 3}
+  Question: Wie viel Liter Wasser verbraucht ein Waschgang mit einer modernen Waschmachine
+    ?
+  Description_1: weniger als 45 Liter
+  Image_1: {fileID: 21300000, guid: dc71ef9c280aecd43885ad1567b80369, type: 3}
+  Description_2: mehr als 45 Liter
+  Image_2: {fileID: 21300000, guid: dc71ef9c280aecd43885ad1567b80369, type: 3}
   rightOption: 1

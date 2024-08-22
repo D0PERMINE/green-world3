@@ -9,6 +9,7 @@ public class FirstLevelGameManager : MonoBehaviour
     public static FirstLevelGameManager Instance { get; private set; }
     [SerializeField] GameObject introControls;
     [SerializeField] GameObject introStory;
+    [SerializeField] ShowText showIntroStoryText;
     [SerializeField] GameObject endingStory;
     [SerializeField] GameObject loseStory;
     [SerializeField] float introTime = 5f;
@@ -22,6 +23,10 @@ public class FirstLevelGameManager : MonoBehaviour
     [SerializeField] int numberOfTrashToSpawn = 1;
     [SerializeField] int timerInSec = 10;
     [SerializeField] WaterTankHandler waterTankHandler;
+    [SerializeField] GameObject pauseMenuCanvas;
+    [SerializeField] FadeEffect fadeEffect;
+    GameState prevGameState;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -50,7 +55,16 @@ public class FirstLevelGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && GameStateHandler.Instance.GameState == GameState.introduction)
         {
             introControls.SetActive(false);
-            StartCoroutine(ShowIntroStory());
+            //StartCoroutine(ShowIntroStory());
+            ShowIntroStory();
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            pauseMenuCanvas.SetActive(!pauseMenuCanvas.activeSelf);
+            //GameStateHandler.Instance.GameState = GameStateHandler.Instance.GameState == GameState.pause ? prevGameState : GameState.pause;
+            //prevGameState = GameStateHandler.Instance.GameState;
+            GameStateHandler.Instance.GameState = GameStateHandler.Instance.GameState == GameState.pause ? prevGameState : (prevGameState = GameStateHandler.Instance.GameState, GameState.pause).Item2;
+            Debug.Log("game state: " + prevGameState);
         }
 
 
@@ -60,13 +74,26 @@ public class FirstLevelGameManager : MonoBehaviour
     {
         return timerInSec;
     }
-    IEnumerator ShowIntroStory()
+    //IEnumerator ShowIntroStory()
+    //{
+    //    introStory.SetActive(true);
+    //    yield return new WaitForSeconds(introTime);
+    //    GameStateHandler.Instance.GameState = GameState.game;
+    //    waterTankHandler.StartWaterTimer();
+    //    introStory.SetActive(false);
+    //}
+
+    public void ShowIntroStory()
     {
         introStory.SetActive(true);
-        yield return new WaitForSeconds(introTime);
-        GameStateHandler.Instance.GameState = GameState.game;
-        waterTankHandler.StartWaterTimer();
-        introStory.SetActive(false);
+        //yield return new WaitForSeconds(introTime);
+        if (Input.GetKeyDown(KeyCode.Space) && showIntroStoryText.isTyping)
+        {
+            Debug.Log("Text finished");
+            GameStateHandler.Instance.GameState = GameState.game;
+            //waterTankHandler.StartWaterTimer();
+            introStory.SetActive(false);
+        }
     }
 
     public void UpdateScrore(bool isRight)
@@ -77,11 +104,12 @@ public class FirstLevelGameManager : MonoBehaviour
         }
         else
         {
-            score -= pointsForWrongAnswer;
+            //score -= pointsForWrongAnswer;
             waterTankHandler.BlinkRed();
             waterTankHandler.SubtractWater();
         }
 
+        Debug.Log("HELLOOO");
         BarsProgressManager.Instance.UpdateTrashBarScore(score);
         ScoreManager.Instance.UpdateUIPoints(score, isRight);
         // ui points to update here
@@ -98,19 +126,29 @@ public class FirstLevelGameManager : MonoBehaviour
 
     public void EndFirstLevel()
     {
-        endingStory.SetActive(true);
+        //endingStory.SetActive(true);
         // show tree as achievment 
         GameStateHandler.Instance.GameState = GameState.endOfFirstQuest;
         StartCoroutine(ShowEndScene());
+        //ShowEndScene();
     }
 
     IEnumerator ShowEndScene()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        yield return new WaitForSeconds(introTime);
+        fadeEffect.StartFadeIn();
+        yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene(nextSceneIndex);
 
     }
+
+    //public void ShowEndScene()
+    //{
+    //    fadeEffect.StartFadeIn();
+    //    int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+    //    //    yield return new WaitForSeconds(introTime);
+    //    SceneManager.LoadScene(nextSceneIndex);
+    //}
 
     public void UpdateCollectedTrash()
     {

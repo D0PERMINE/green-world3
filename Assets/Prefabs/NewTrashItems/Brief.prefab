@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brief
       objectReference: {fileID: 0}
+    - target: {fileID: 3288522579656765490, guid: f8dbe86e4da48e8408071353fa00a71c, type: 3}
+      propertyPath: trash
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4585445381688076439, guid: f8dbe86e4da48e8408071353fa00a71c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 2.6638
