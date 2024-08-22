@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
 
-    public Rigidbody2D rb;
-    public Animator animator;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator;
 
-    public Vector2 movement;
-    public AudioSource footstepAudio;
+    [SerializeField] private Vector2 movement;
+    [SerializeField] private AudioSource footstepAudio;
 
     private bool canMove; // Steuerung der Bewegungsfähigkeit
+
+    // getter und setter
+    public Vector2 Movement { get => movement; set => movement = value; }
 
     private void Start()
     {

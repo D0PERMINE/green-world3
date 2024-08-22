@@ -16,7 +16,7 @@ public class ShowText : MonoBehaviour
     void Start()
     {
         fullText = textComponent.text;
-        //StartCoroutine(TypeText());
+        StartCoroutine(TypeText());
     }
 
     public IEnumerator TypeText()

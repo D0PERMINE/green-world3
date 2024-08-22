@@ -109,14 +109,24 @@ public class WaterTankHandler : MonoBehaviour
     {
         while (normalizedWaterTime <= 1f)
         {
+            // Überprüfe, ob das Spiel pausiert ist
+            while (GameStateHandler.Instance.GameState == GameState.pause)
+            {
+                // Warte einen Frame und überprüfe erneut, ob das Spiel pausiert ist
+                yield return null;
+            }
+
+            // Führe den Timer-Countdown fort, wenn das Spiel nicht pausiert ist
             normalizedWaterTime += Time.deltaTime / levelDuration;
             waterBarImage.fillAmount -= Time.deltaTime / levelDuration;
-            yield return null;
+
+            yield return null; // Warte einen Frame, bevor die Schleife fortgesetzt wird
         }
 
         Debug.Log("Lost");
         ShowLoseScreen();
     }
+
 
     void ShowLoseScreen()
     {
@@ -133,24 +143,5 @@ public class WaterTankHandler : MonoBehaviour
             Debug.Log("Game Manager error ");
         }
     }
-    //IEnumerator Timer()
-    //{
-    //    // leverDuration 100% 15 sec
-    //    // 15/100 - 1% /100
-    //    float normalizedTime = 0;
-    //    while (normalizedTime <= 1f)
-    //    {
-    //        currentWater -= 0.1f;
-    //        if (currentWater < 0)
-    //        {
-    //            currentWater = 0;
-    //        }
 
-    //        normalizedTime += Time.deltaTime/ levelDuration;
-    //        waterBarImage.fillAmount = currentWater / maxWater;
-    //        yield return null;
-    //    }
-
-    //    waterBarImage.color = originalColor;
-    //}
 }

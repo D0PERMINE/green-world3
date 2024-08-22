@@ -14,10 +14,13 @@ public class MainMenu : MonoBehaviour
     public void ContinueGame()
     {
         playerMenu.SetActive(false);
+        GameStateHandler.Instance.GameState = GameState.game;
     }
 
     public void RestartGame()
     {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        Debug.Log("Neuladen der Szene: " + currentSceneName);
         LoadSceneByName("Level_01");
     }
 

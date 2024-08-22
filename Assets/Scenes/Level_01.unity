@@ -414,7 +414,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 14}
-  m_SizeDelta: {x: 265.3569, y: 86.4412}
+  m_SizeDelta: {x: 600, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53894707
 MonoBehaviour:
@@ -462,7 +462,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1981562564}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ContinueGame
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2633,6 +2633,7 @@ MonoBehaviour:
   timerInSec: 30
   waterTankHandler: {fileID: 8291833728266132176}
   pauseMenuCanvas: {fileID: 4995213056696744847}
+  playerMenuCanvas: {fileID: 1503298703}
   fadeEffect: {fileID: 1106399992}
   willkommenAudio: {fileID: 338618292}
   einleitungAudio: {fileID: 338618291}
@@ -4508,7 +4509,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 69}
-  m_SizeDelta: {x: 265.3569, y: 86.4412}
+  m_SizeDelta: {x: 600, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &550948427
 MonoBehaviour:
@@ -6131,9 +6132,10 @@ MonoBehaviour:
     Wir haben ein Problem in der Stadt, bitte helf uns!'
   - "Der M\xFCll muss in die richtigen M\xFClleimer geworfen werden.\nWir haben nicht
     viel Zeit bis die M\xFCllabfuhr kommt."
-  - "Noch ein letzter Hinweis: Deine Zeit ist begrenzt durch den ablaufenden Wassertank
-    begranzt. Sammle den M\xFCll ein Bevor der Wassertank abgelaufen ist abgelaufen
-    ist. Sammle die Flaschen in der Umgebung auf, um mehr Zeit zu bekommen."
+  - 'Noch ein letzter Hinweis: Deine Zeit ist begrenzt durch den ablaufenden Wassertank
+    begranzt. '
+  - "Sammle den M\xFCll ein Bevor der Wassertank abgelaufen ist abgelaufen ist. Sammle
+    die Flaschen in der Umgebung auf, um mehr Zeit zu bekommen."
   followUpDialogueLines:
   - "Bitte sammle jeden M\xFCll ein, den du findest!\nWir haben nicht mehr viel Zeit!"
   playerMovement: {fileID: 1801378252}
@@ -7444,7 +7446,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -41}
-  m_SizeDelta: {x: 352.7968, y: 86.4412}
+  m_SizeDelta: {x: 600, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &956567863
 MonoBehaviour:
@@ -7948,7 +7950,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -13}
-  m_SizeDelta: {x: 352.7968, y: 86.4412}
+  m_SizeDelta: {x: 600, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046822186
 MonoBehaviour:
@@ -10490,7 +10492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1503298704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32053,8 +32055,11 @@ MonoBehaviour:
   selectedTrashBin: {fileID: 0}
   holdPosition: {fileID: 1777141573}
   holdDistance: 1
+  playerMovement: {fileID: 1801378252}
+  lastMovementDirection: {x: 0, y: 1}
   correctTrashType: 0
   onCollisionWithTashBin: 0
+  trashBinType: 0
   pickUpAndDropItemAudio: {fileID: 1801378260}
 --- !u!82 &1801378259
 AudioSource:
@@ -32453,7 +32458,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -68}
-  m_SizeDelta: {x: 468.8831, y: 42.5748}
+  m_SizeDelta: {x: 600, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847850758
 MonoBehaviour:

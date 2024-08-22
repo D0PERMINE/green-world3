@@ -7,28 +7,29 @@ using UnityEngine.SceneManagement;
 public class FirstLevelGameManager : MonoBehaviour
 {
     public static FirstLevelGameManager Instance { get; private set; }
-    [SerializeField] GameObject introControls;
-    [SerializeField] GameObject introStory;
-    [SerializeField] ShowText showIntroStoryText;
-    [SerializeField] GameObject endingStory;
-    [SerializeField] GameObject loseStory;
-    [SerializeField] float introTime = 5f;
+    [SerializeField] private GameObject introControls;
+    [SerializeField] private GameObject introStory;
+    [SerializeField] private ShowText showIntroStoryText;
+    [SerializeField] private GameObject endingStory;
+    [SerializeField] private GameObject loseStory;
+    [SerializeField] private float introTime = 5f;
 
-    [SerializeField] int score = 0;
-    [SerializeField] int pointsForRightAnswer = 10;
-    [SerializeField] int pointsForWrongAnswer = 5;
+    [SerializeField] private int score = 0;
+    [SerializeField] private int pointsForRightAnswer = 10;
+    [SerializeField] private int pointsForWrongAnswer = 5;
     public bool wasFirstQuestSolved = false;
-    [SerializeField] DoorController doorController;
-    [SerializeField] int collectedTrash = 0;
-    [SerializeField] int numberOfTrashToSpawn = 1;
-    [SerializeField] int timerInSec = 10;
-    [SerializeField] WaterTankHandler waterTankHandler;
-    [SerializeField] GameObject pauseMenuCanvas;
-    [SerializeField] FadeEffect fadeEffect;
+    [SerializeField] private DoorController doorController;
+    [SerializeField] private int collectedTrash = 0;
+    [SerializeField] private int numberOfTrashToSpawn = 1;
+    [SerializeField] private int timerInSec = 10;
+    [SerializeField] private WaterTankHandler waterTankHandler;
+    [SerializeField] private GameObject pauseMenuCanvas;
+    [SerializeField] private GameObject playerMenuCanvas;
+    [SerializeField] private FadeEffect fadeEffect;
     GameState prevGameState;
 
-    public AudioSource willkommenAudio;
-    public AudioSource einleitungAudio;
+    [SerializeField] private AudioSource willkommenAudio;
+    [SerializeField] private AudioSource einleitungAudio;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class FirstLevelGameManager : MonoBehaviour
 
     private void Start()
     {
+        // Fange mit Intro an und zeige die Steuerung
         GameStateHandler.Instance.GameState = GameState.introduction;
         introControls.SetActive(true);
         endingStory.SetActive(false);
@@ -59,16 +61,18 @@ public class FirstLevelGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && GameStateHandler.Instance.GameState == GameState.introduction)
         {
             introControls.SetActive(false);
-            //StartCoroutine(ShowIntroStory());
             ShowIntroStory();
         }
-        else if (Input.GetKeyDown(KeyCode.P))
+        else if (Input.GetKeyDown(KeyCode.Escape) && GameStateHandler.Instance.GameState == GameState.game)
         {
-            pauseMenuCanvas.SetActive(!pauseMenuCanvas.activeSelf);
-            //GameStateHandler.Instance.GameState = GameStateHandler.Instance.GameState == GameState.pause ? prevGameState : GameState.pause;
-            //prevGameState = GameStateHandler.Instance.GameState;
-            GameStateHandler.Instance.GameState = GameStateHandler.Instance.GameState == GameState.pause ? prevGameState : (prevGameState = GameStateHandler.Instance.GameState, GameState.pause).Item2;
-            Debug.Log("game state: " + prevGameState);
+            playerMenuCanvas.SetActive(true);
+            GameStateHandler.Instance.GameState = GameState.pause;
+
+            //pauseMenuCanvas.SetActive(!pauseMenuCanvas.activeSelf);
+            ////GameStateHandler.Instance.GameState = GameStateHandler.Instance.GameState == GameState.pause ? prevGameState : GameState.pause;
+            ////prevGameState = GameStateHandler.Instance.GameState;
+            //GameStateHandler.Instance.GameState = GameStateHandler.Instance.GameState == GameState.pause ? prevGameState : (prevGameState = GameStateHandler.Instance.GameState, GameState.pause).Item2;
+            //Debug.Log("game state: " + prevGameState);
         }
 
 
@@ -148,14 +152,6 @@ public class FirstLevelGameManager : MonoBehaviour
         SceneManager.LoadScene(nextSceneIndex);
 
     }
-
-    //public void ShowEndScene()
-    //{
-    //    fadeEffect.StartFadeIn();
-    //    int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-    //    //    yield return new WaitForSeconds(introTime);
-    //    SceneManager.LoadScene(nextSceneIndex);
-    //}
 
     public void UpdateCollectedTrash()
     {

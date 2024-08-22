@@ -40,24 +40,24 @@ public class TrashBin : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>())
         {
             playerController = other.gameObject.GetComponent<PlayerController>();
-            if (playerController.heldTrash != null)
+            if (playerController.HeldTrash != null)
             {
-                TrashType heldTrashType = playerController.heldTrash.GetComponent<Trash>().trash;
+                TrashType heldTrashType = playerController.HeldTrash.GetComponent<Trash>().trash;
 
                 if (heldTrashType == trashType)
                 {
                     Debug.Log("true");
-                    playerController.correctTrashType = true;
+                    playerController.CorrectTrashType = true;
                 }
                 else
                 {
                     Debug.Log("false");
-                    playerController.correctTrashType = false;
+                    playerController.CorrectTrashType = false;
                 }
 
                
-                playerController.onCollisionWithTashBin = true;
-                playerController.selectedTrashBin = this;
+                playerController.OnCollisionWithTashBin = true;
+                playerController.SelectedTrashBin = this;
             }
         }
     }
@@ -66,8 +66,8 @@ public class TrashBin : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerController>())
         {
-            playerController.onCollisionWithTashBin = false;
-            playerController.selectedTrashBin = null;
+            playerController.OnCollisionWithTashBin = false;
+            playerController.SelectedTrashBin = null;
    
         }
     }
