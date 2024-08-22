@@ -68,11 +68,18 @@ public class BarsProgressManager : MonoBehaviour
 
     public void UpdateQuizhBarScore(int newScore)
     {
-        quizBarScore = newScore;
+        if (newScore > quizBarScore)
+        {
+            quizBarFilling.fillAmount += (percentageOfSingleQuestion / 100);
+        } else if (newScore <= quizBarScore)
+        {
+            quizBarFilling.fillAmount -= (percentageOfSingleQuestion / 100);
+        }
         // 10 - 100%; 1 - 10%
         // 100 /10, 10/100
-        quizBarFilling.fillAmount += (percentageOfSingleQuestion/100);
+        //quizBarFilling.fillAmount += (percentageOfSingleQuestion/100);
         quizBarAmount = quizBarFilling.fillAmount;
+        quizBarScore = newScore;
     }
 
     public void SetMaxTrashBarScore( int maxScore)

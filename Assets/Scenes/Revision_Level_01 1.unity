@@ -5298,6 +5298,9 @@ MonoBehaviour:
     Wir haben ein Problem in der Stadt, bitte helf uns!'
   - "Der M\xFCll muss in die richtigen M\xFClleimer geworfen werden.\nWir haben nicht
     viel Zeit bis die M\xFCllabfuhr kommt."
+  - "Noch ein letzter Hinweis: Deine Zeit ist begrenzt durch den ablaufenden Wassertank
+    begranzt. Sammle den M\xFCll ein Bevor der Wassertank abgelaufen ist abgelaufen
+    ist. Sammle die Flaschen in der Umgebung auf, um mehr Zeit zu bekommen."
   followUpDialogueLines:
   - "Bitte sammle jeden M\xFCll ein, den du findest!\nWir haben nicht mehr viel Zeit!"
   playerMovement: {fileID: 1801378252}

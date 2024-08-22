@@ -57,10 +57,12 @@ public class SecondLevelGameManager : MonoBehaviour
         if (isRight)
         {
             score += pointsForRightAnswer;
+            Debug.Log("score: " + score);
         }
         else
         {
-            score -= pointsForWrongAnswer;
+            //score -= pointsForWrongAnswer;
+            Debug.Log("score: " + score);
             waterTankHandler.BlinkRed();
             waterTankHandler.SubtractWater();
         }

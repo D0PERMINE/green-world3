@@ -16,10 +16,10 @@ public class ShowText : MonoBehaviour
     void Start()
     {
         fullText = textComponent.text;
-        StartCoroutine(TypeText());
+        //StartCoroutine(TypeText());
     }
 
-    IEnumerator TypeText()
+    public IEnumerator TypeText()
     {
         isTyping = true;
         for (int i = 0; i <= fullText.Length; i++)
@@ -31,5 +31,7 @@ public class ShowText : MonoBehaviour
         textIsFinished = true;
         Debug.Log("Text finishedDDDDDDDDDDDD");
     }
+
+   
 
 }

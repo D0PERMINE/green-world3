@@ -7,7 +7,7 @@ public class QuizUIManager : MonoBehaviour
     public static QuizUIManager Instance { get; private set; }
     [SerializeField] SecondQuestOptionHandler selectedOption;
     public int currentQuizIndex = 0;
-    [SerializeField] bool endOfQuiz = false;
+    //[SerializeField] bool endOfQuiz = false;
 
     private void Awake()
     {
@@ -77,7 +77,7 @@ public class QuizUIManager : MonoBehaviour
         }
         else
         {
-            endOfQuiz = true;
+            //endOfQuiz = true;
             SecondLevelGameManager.Instance.EndFirstLevel();
         }
 
