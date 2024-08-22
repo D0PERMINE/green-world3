@@ -27,6 +27,9 @@ public class FirstLevelGameManager : MonoBehaviour
     [SerializeField] FadeEffect fadeEffect;
     GameState prevGameState;
 
+    public AudioSource willkommenAudio;
+    public AudioSource einleitungAudio;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -48,6 +51,7 @@ public class FirstLevelGameManager : MonoBehaviour
         introStory.SetActive(false);
         loseStory.SetActive(false);
         BarsProgressManager.Instance.SetMaxTrashBarScore(numberOfTrashToSpawn);
+        willkommenAudio.Play();
     }
 
     private void Update()
@@ -86,10 +90,13 @@ public class FirstLevelGameManager : MonoBehaviour
     public void ShowIntroStory()
     {
         introStory.SetActive(true);
+        willkommenAudio.Stop();
+        einleitungAudio.Play();
         //yield return new WaitForSeconds(introTime);
         if (Input.GetKeyDown(KeyCode.Space) && showIntroStoryText.isTyping)
         {
             Debug.Log("Text finished");
+            einleitungAudio.Stop();
             GameStateHandler.Instance.GameState = GameState.game;
             //waterTankHandler.StartWaterTimer();
             introStory.SetActive(false);
