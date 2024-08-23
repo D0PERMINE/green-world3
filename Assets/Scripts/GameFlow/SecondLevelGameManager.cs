@@ -20,6 +20,7 @@ public class SecondLevelGameManager : MonoBehaviour
     [SerializeField] WaterTankHandler waterTankHandler;
     [SerializeField] FadeToTransparentEffect fadeToTransparentEffect;
     [SerializeField] CameraController cameraController;
+    [SerializeField] private GameObject playerMenuCanvas;
 
     private void Awake()
     {
@@ -45,6 +46,15 @@ public class SecondLevelGameManager : MonoBehaviour
         loseStory.SetActive(false);
         StartCoroutine(ShowIntroStory());
         BarsProgressManager.Instance.SetMaxQuizBarScore(quizQuestionsGenerator.GetQuizQuestionsArray().Length);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && GameStateHandler.Instance.GameState == GameState.game)
+        {
+            playerMenuCanvas.SetActive(true);
+            GameStateHandler.Instance.GameState = GameState.pause;
+        }
     }
 
     IEnumerator ZoomOut()
@@ -103,7 +113,7 @@ public class SecondLevelGameManager : MonoBehaviour
         loseStory.SetActive(true);
         // show tree as achievment 
         GameStateHandler.Instance.GameState = GameState.endOfFirstQuest;
-        StartCoroutine(ShowLoseScene());
+        //StartCoroutine(ShowLoseScene());
     }
 
     IEnumerator ShowLoseScene()

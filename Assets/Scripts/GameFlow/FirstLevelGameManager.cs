@@ -67,15 +67,7 @@ public class FirstLevelGameManager : MonoBehaviour
         {
             playerMenuCanvas.SetActive(true);
             GameStateHandler.Instance.GameState = GameState.pause;
-
-            //pauseMenuCanvas.SetActive(!pauseMenuCanvas.activeSelf);
-            ////GameStateHandler.Instance.GameState = GameStateHandler.Instance.GameState == GameState.pause ? prevGameState : GameState.pause;
-            ////prevGameState = GameStateHandler.Instance.GameState;
-            //GameStateHandler.Instance.GameState = GameStateHandler.Instance.GameState == GameState.pause ? prevGameState : (prevGameState = GameStateHandler.Instance.GameState, GameState.pause).Item2;
-            //Debug.Log("game state: " + prevGameState);
         }
-
-
     }
 
     public float GetTimer()
@@ -173,7 +165,7 @@ public class FirstLevelGameManager : MonoBehaviour
         loseStory.SetActive(true);
         // show tree as achievment 
         GameStateHandler.Instance.GameState = GameState.endOfFirstQuest;
-        StartCoroutine(ShowLoseScene());
+        //StartCoroutine(ShowLoseScene());
     }
 
     IEnumerator ShowLoseScene()
