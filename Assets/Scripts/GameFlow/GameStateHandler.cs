@@ -9,6 +9,7 @@ public enum GameState
     game,
     gameDelay,
     pause,
+    cameraTransition,
     endOfFirstQuest,
     endOfSecondQuest
 }

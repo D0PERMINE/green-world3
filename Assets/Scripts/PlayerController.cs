@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
                 // Punkte hinzufügen
                 FirstLevelGameManager.Instance.UpdateScrore(true);
                 Debug.Log("Add points");
+                FirstLevelGameManager.Instance.UpdateCollectedTrash();
                 Destroy(heldTrash);
 
             } else if (!correctTrashType && onCollisionWithTashBin)
@@ -94,11 +95,11 @@ public class PlayerController : MonoBehaviour
                 // Minuspunkte hinzufügen
                 FirstLevelGameManager.Instance.UpdateScrore(false);
                 Debug.Log("Subtract points");
+                FirstLevelGameManager.Instance.UpdateCollectedTrash();
                 Destroy(heldTrash);
             }
             pickUpAndDropItemAudio.Play();
             heldTrash = null;
-            FirstLevelGameManager.Instance.UpdateCollectedTrash();
         }
     }
 

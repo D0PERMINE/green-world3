@@ -132,7 +132,7 @@ public class FirstLevelGameManager : MonoBehaviour
     {
         wasFirstQuestSolved = true;
         if (doorController == null) return;
-        doorController.OpenDoor();
+        //doorController.OpenDoor();
     }
 
     public void EndFirstLevel()

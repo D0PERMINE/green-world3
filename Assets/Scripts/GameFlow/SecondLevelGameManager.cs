@@ -19,6 +19,8 @@ public class SecondLevelGameManager : MonoBehaviour
     [SerializeField] int timerInSec = 10;
     [SerializeField] WaterTankHandler waterTankHandler;
     [SerializeField] FadeToTransparentEffect fadeToTransparentEffect;
+    [SerializeField] CameraController cameraController;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -35,6 +37,7 @@ public class SecondLevelGameManager : MonoBehaviour
     private void Start()
     {
         fadeToTransparentEffect.StartFadeOut();
+        StartCoroutine(ZoomOut());
         GameStateHandler.Instance.GameState = GameState.game;
        
         endingStory.SetActive(false);
@@ -42,6 +45,12 @@ public class SecondLevelGameManager : MonoBehaviour
         loseStory.SetActive(false);
         StartCoroutine(ShowIntroStory());
         BarsProgressManager.Instance.SetMaxQuizBarScore(quizQuestionsGenerator.GetQuizQuestionsArray().Length);
+    }
+
+    IEnumerator ZoomOut()
+    {
+        yield return new WaitForSeconds(3f);
+        cameraController.ZoomOutCamera();
     }
 
     IEnumerator ShowIntroStory()
