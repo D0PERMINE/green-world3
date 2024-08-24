@@ -5,18 +5,22 @@ using UnityEngine;
 
 public class ShowText : MonoBehaviour
 {
-    public TMP_Text textComponent;  // Das UI-Text-Element
-    public string fullText;     // Der volle Text, der angezeigt werden soll
-    public float delay = 0.05f; // Verzögerung zwischen den Zeichen
+    [SerializeField] private TMP_Text textComponent;  // Das UI-Text-Element
+    [SerializeField] private string fullText;     // Der volle Text, der angezeigt werden soll
+    [SerializeField] private float delay = 0.05f; // Verzögerung zwischen den Zeichen
 
-    private string currentText = ""; // Der aktuelle Text, der angezeigt wird
-    public bool isTyping; 
-    public bool textIsFinished;
+    [SerializeField] private string currentText = ""; // Der aktuelle Text, der angezeigt wird
+    [SerializeField] private bool isTyping;
+    [SerializeField] private bool textIsFinished;
+
+    // getter und setter
+    public bool IsTyping { get => isTyping; set => isTyping = value; }
+    public bool TextIsFinished { get => textIsFinished; set => textIsFinished = value; }
 
     void Start()
     {
         fullText = textComponent.text;
-        StartCoroutine(TypeText());
+        //StartCoroutine(TypeText());
     }
 
     public IEnumerator TypeText()

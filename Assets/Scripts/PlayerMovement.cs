@@ -31,10 +31,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameStateHandler.Instance.GameState != GameState.game) { return; }
+        if (GameStateHandler.Instance.GameState != GameState.game) { footstepAudio.enabled = false; return; }
         Move();
         FoodStepAudioOn();
-
     }
 
     public void Move()
@@ -79,13 +78,16 @@ public class PlayerMovement : MonoBehaviour
     private void FoodStepAudioOn()
     {
         // Überprüfe, ob der Charakter sich bewegt
-        if (IsCharacterMoving() && canMove)
+        if (IsCharacterMoving() && canMove && GameStateHandler.Instance.GameState == GameState.game)
         {
             footstepAudio.enabled = true;
+            Debug.Log("Food ON");
         }
         else
         {
             footstepAudio.enabled = false;
+            Debug.Log("Food OFF");
+
         }
     }
 

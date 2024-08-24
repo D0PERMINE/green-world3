@@ -42,9 +42,9 @@ public class SecondLevelGameManager : MonoBehaviour
         GameStateHandler.Instance.GameState = GameState.game;
        
         endingStory.SetActive(false);
-        introStory.SetActive(true);
+        //introStory.SetActive(true);
         loseStory.SetActive(false);
-        StartCoroutine(ShowIntroStory());
+        //StartCoroutine(ShowIntroStory());
         BarsProgressManager.Instance.SetMaxQuizBarScore(quizQuestionsGenerator.GetQuizQuestionsArray().Length);
     }
 
@@ -63,13 +63,13 @@ public class SecondLevelGameManager : MonoBehaviour
         cameraController.ZoomOutCamera();
     }
 
-    IEnumerator ShowIntroStory()
-    {
-        introStory.SetActive(true);
-        yield return new WaitForSeconds(introTime);
-        introStory.SetActive(false);
-        waterTankHandler.StartWaterTimer();
-    }
+    //IEnumerator ShowIntroStory()
+    //{
+    //    introStory.SetActive(true);
+    //    yield return new WaitForSeconds(introTime);
+    //    introStory.SetActive(false);
+    //    waterTankHandler.StartWaterTimer();
+    //}
 
     public void UpdateScrore(bool isRight)
     {
@@ -116,11 +116,11 @@ public class SecondLevelGameManager : MonoBehaviour
         //StartCoroutine(ShowLoseScene());
     }
 
-    IEnumerator ShowLoseScene()
-    {
-        yield return new WaitForSeconds(introTime);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    //IEnumerator ShowLoseScene()
+    //{
+    //    yield return new WaitForSeconds(introTime);
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //}
 
     public float GetTimer()
     {

@@ -5,21 +5,22 @@ using UnityEngine.UI;
 
 public class WaterTankHandler : MonoBehaviour
 {
-    [SerializeField] Image waterBarImage;
-    public AudioSource addWaterAudio;
-    [SerializeField] Color originalColor; // Ursprüngliche Farbe des Balkens
-    [SerializeField] Color blinkColor; // Farbe, in die geblinkt werden soll
+    [SerializeField] private Image waterBarImage;
+    [SerializeField] private AudioSource addWaterAudio;
+    [SerializeField] private Color originalColor; // Ursprüngliche Farbe des Balkens
+    [SerializeField] private Color blinkColor; // Farbe, in die geblinkt werden soll
 
-    [SerializeField] float currentWater; // Aktuelles Wasser
-    [SerializeField] float maxWater = 1f; // Aktuelles Wasser
-    float blinkTimer;
-    float levelDuration = 1; 
-    [SerializeField] float blinkingDuration = 1;
-    [SerializeField] bool isBlinking = false;
-    [SerializeField] float addedWaterAmount = 0.25f;
-    [SerializeField] float substractedWaterAmount = 0.01f;
-    [SerializeField] float normalizedWaterTime = 0;
-    [SerializeField] GameObject gameManager;
+    [SerializeField] private float currentWater; // Aktuelles Wasser
+    [SerializeField] private float maxWater = 1f; // Aktuelles Wasser
+    [SerializeField] private float blinkTimer;
+    [SerializeField] private float levelDuration = 1; 
+    [SerializeField] private float blinkingDuration = 1;
+    [SerializeField] private bool isBlinking = false;
+    [SerializeField] private float addedWaterAmount = 0.25f;
+    [SerializeField] private float substractedWaterAmount = 0.01f;
+    [SerializeField] private float normalizedWaterTime = 0;
+    [SerializeField] private GameObject gameManager;
+
     private void Start()
     {
         originalColor = waterBarImage.color;

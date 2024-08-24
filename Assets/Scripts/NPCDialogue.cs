@@ -103,6 +103,7 @@ public class NPCDialogue : MonoBehaviour
 
         foreach (char letter in currentLine.ToCharArray())
         {
+            Debug.Log("lol: " + letter);
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.05f); // Wartezeit zwischen den Buchstaben
         }

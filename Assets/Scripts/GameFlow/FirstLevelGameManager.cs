@@ -30,6 +30,8 @@ public class FirstLevelGameManager : MonoBehaviour
 
     [SerializeField] private AudioSource willkommenAudio;
     [SerializeField] private AudioSource einleitungAudio;
+    [SerializeField] private ShowText showText;
+
 
     private void Awake()
     {
@@ -89,7 +91,7 @@ public class FirstLevelGameManager : MonoBehaviour
         willkommenAudio.Stop();
         einleitungAudio.Play();
         //yield return new WaitForSeconds(introTime);
-        if (Input.GetKeyDown(KeyCode.Space) && showIntroStoryText.isTyping)
+        if (Input.GetKeyDown(KeyCode.Space) && showIntroStoryText.IsTyping)
         {
             Debug.Log("Text finished");
             einleitungAudio.Stop();
@@ -122,18 +124,33 @@ public class FirstLevelGameManager : MonoBehaviour
 
     public void OnSolvedFirstQuest()
     {
+        endingStory.SetActive(true);
+        GameStateHandler.Instance.GameState = GameState.firstQuizIsSolved;
+
+        // Starte die Coroutine, um zu warten, bis der Text vollständig getippt ist
+        StartCoroutine(WaitForTextToFinish());
+    }
+
+    private IEnumerator WaitForTextToFinish()
+    {
+        while (!showText.TextIsFinished)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && showText.IsTyping)
+            {
+                break;  // Breche die schleife ab, da die Story beendet wurde
+            }
+
+            yield return null; // Warte einen Frame und überprüfe dann erneut
+        }
+
+        endingStory.SetActive(false);
         wasFirstQuestSolved = true;
-        if (doorController == null) return;
-        //doorController.OpenDoor();
     }
 
     public void EndFirstLevel()
     {
-        //endingStory.SetActive(true);
-        // show tree as achievment 
         GameStateHandler.Instance.GameState = GameState.endOfFirstQuest;
         StartCoroutine(ShowEndScene());
-        //ShowEndScene();
     }
 
     IEnumerator ShowEndScene()
@@ -163,14 +180,13 @@ public class FirstLevelGameManager : MonoBehaviour
     public void ShowLoseScreen()
     {
         loseStory.SetActive(true);
-        // show tree as achievment 
         GameStateHandler.Instance.GameState = GameState.endOfFirstQuest;
         //StartCoroutine(ShowLoseScene());
     }
 
-    IEnumerator ShowLoseScene()
-    {
-        yield return new WaitForSeconds(introTime);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    //IEnumerator ShowLoseScene()
+    //{
+    //    yield return new WaitForSeconds(introTime);
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //}
 }
