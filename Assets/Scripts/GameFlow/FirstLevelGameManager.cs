@@ -124,8 +124,8 @@ public class FirstLevelGameManager : MonoBehaviour
 
     public void OnSolvedFirstQuest()
     {
-        endingStory.SetActive(true);
         GameStateHandler.Instance.GameState = GameState.firstQuizIsSolved;
+        endingStory.SetActive(true);
 
         // Starte die Coroutine, um zu warten, bis der Text vollständig getippt ist
         StartCoroutine(WaitForTextToFinish());
@@ -150,6 +150,7 @@ public class FirstLevelGameManager : MonoBehaviour
     public void EndFirstLevel()
     {
         GameStateHandler.Instance.GameState = GameState.endOfFirstQuest;
+        Debug.Log("GAME State: " + GameStateHandler.Instance.GameState);
         StartCoroutine(ShowEndScene());
     }
 
@@ -157,6 +158,7 @@ public class FirstLevelGameManager : MonoBehaviour
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         fadeEffect.StartFadeIn();
+        GameStateHandler.Instance.GameState = GameState.sceneTransition;
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene(nextSceneIndex);
 

@@ -81,13 +81,10 @@ public class PlayerMovement : MonoBehaviour
         if (IsCharacterMoving() && canMove && GameStateHandler.Instance.GameState == GameState.game)
         {
             footstepAudio.enabled = true;
-            Debug.Log("Food ON");
         }
         else
         {
             footstepAudio.enabled = false;
-            Debug.Log("Food OFF");
-
         }
     }
 

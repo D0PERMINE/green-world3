@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
-    [SerializeField] FadeEffect fadeEffect;
-    [SerializeField] ParticleSystem dirtySmokeParticles;
-    [SerializeField] ShowText showAchievementText;
-    [SerializeField] GameObject storyPanel;
+    [SerializeField] private FadeEffect fadeEffect;
+    [SerializeField] private ParticleSystem dirtySmokeParticles;
+    [SerializeField] private ShowText showAchievementText;
+    [SerializeField] private GameObject storyPanel;
+    [SerializeField] private ShowText showText;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(CityFade());
         StartCoroutine(StopDirtySmokeParticles());
         StartCoroutine(StartTyping());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator CityFade()
@@ -39,7 +34,7 @@ public class AchievementManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         storyPanel.SetActive(true);
-        yield return new WaitForSeconds(.01f);
-        StartCoroutine(showAchievementText.TypeText());
+        //yield return null;
+        //StartCoroutine(showText.TypeText());
     }
 }

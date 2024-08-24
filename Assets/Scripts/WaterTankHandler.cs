@@ -111,7 +111,7 @@ public class WaterTankHandler : MonoBehaviour
         while (normalizedWaterTime <= 1f)
         {
             // Überprüfe, ob das Spiel pausiert ist
-            while (GameStateHandler.Instance.GameState == GameState.pause)
+            while (GameStateHandler.Instance.GameState != GameState.game)
             {
                 // Warte einen Frame und überprüfe erneut, ob das Spiel pausiert ist
                 yield return null;

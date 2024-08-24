@@ -7,6 +7,7 @@ public class ShowText : MonoBehaviour
 {
     [SerializeField] private TMP_Text textComponent;  // Das UI-Text-Element
     [SerializeField] private string fullText;     // Der volle Text, der angezeigt werden soll
+    [SerializeField] private float delayStart = 0f; // Verzögerung zwischen den Zeichen
     [SerializeField] private float delay = 0.05f; // Verzögerung zwischen den Zeichen
 
     [SerializeField] private string currentText = ""; // Der aktuelle Text, der angezeigt wird
@@ -20,11 +21,13 @@ public class ShowText : MonoBehaviour
     void Start()
     {
         fullText = textComponent.text;
-        //StartCoroutine(TypeText());
+        textComponent.text = "";
+        StartCoroutine(TypeText());
     }
 
     public IEnumerator TypeText()
     {
+        yield return new WaitForSeconds(delayStart);
         isTyping = true;
         for (int i = 0; i <= fullText.Length; i++)
         {

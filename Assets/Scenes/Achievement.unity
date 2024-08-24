@@ -440,6 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 983197761}
   fullText: 
+  delayStart: 5
   delay: 0.05
   currentText: 
   isTyping: 0
@@ -750,6 +751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 983197761}
   fullText: 
+  delayStart: 3
   delay: 0.05
   currentText: 
   isTyping: 0
@@ -979,6 +981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 884090020}
   fullText: 
+  delayStart: 3
   delay: 0.05
   currentText: 
   isTyping: 0
@@ -6584,7 +6587,7 @@ Transform:
   m_GameObject: {fileID: 632960554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 83.11999, y: -5.400002, z: -10}
+  m_LocalPosition: {x: 12.7, y: -5.400002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6717,6 +6720,7 @@ MonoBehaviour:
   dirtySmokeParticles: {fileID: 367415225}
   showAchievementText: {fileID: 111054469}
   storyPanel: {fileID: 111054467}
+  showText: {fileID: 111054469}
 --- !u!4 &714972704
 Transform:
   m_ObjectHideFlags: 0
@@ -7953,7 +7957,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 896046482}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -8334,9 +8338,9 @@ RectTransform:
   m_Father: {fileID: 1059140143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 1.6000366, y: 0}
-  m_SizeDelta: {x: 0, y: 357.8726}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 385, y: 0}
+  m_SizeDelta: {x: 858.95, y: 490.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1194129235
 MonoBehaviour:
@@ -9107,6 +9111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 884090020}
   fullText: 
+  delayStart: 3
   delay: 0.05
   currentText: 
   isTyping: 0
@@ -9491,7 +9496,7 @@ Transform:
   m_GameObject: {fileID: 1954419198}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -1, z: -1}
+  m_LocalPosition: {x: -1.13, y: -2.37, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9866,11 +9871,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2007587211030553595, guid: 3abe5b83a84f7f04caf1b74e943a2864, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 626.28
+      value: 837.66
       objectReference: {fileID: 0}
     - target: {fileID: 2007587211030553595, guid: 3abe5b83a84f7f04caf1b74e943a2864, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 357.8726
+      value: 478.66
       objectReference: {fileID: 0}
     - target: {fileID: 2007587211030553595, guid: 3abe5b83a84f7f04caf1b74e943a2864, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9882,7 +9887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2007587211030553595, guid: 3abe5b83a84f7f04caf1b74e943a2864, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.1825e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2007587211030553595, guid: 3abe5b83a84f7f04caf1b74e943a2864, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9902,7 +9907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2007587211030553595, guid: 3abe5b83a84f7f04caf1b74e943a2864, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4
+      value: 4.0004
       objectReference: {fileID: 0}
     - target: {fileID: 2007587211030553595, guid: 3abe5b83a84f7f04caf1b74e943a2864, type: 3}
       propertyPath: m_AnchoredPosition.y

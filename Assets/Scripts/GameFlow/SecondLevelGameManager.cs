@@ -35,20 +35,24 @@ public class SecondLevelGameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
         fadeToTransparentEffect.StartFadeOut();
         StartCoroutine(ZoomOut());
+        waterTankHandler.StartWaterTimer();
+
+        Debug.Log("game state1: " + GameStateHandler.Instance.GameState);
         GameStateHandler.Instance.GameState = GameState.game;
+        Debug.Log("game state2: " + GameStateHandler.Instance.GameState);
        
-        endingStory.SetActive(false);
+        //endingStory.SetActive(false);
         //introStory.SetActive(true);
         loseStory.SetActive(false);
         //StartCoroutine(ShowIntroStory());
         BarsProgressManager.Instance.SetMaxQuizBarScore(quizQuestionsGenerator.GetQuizQuestionsArray().Length);
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && GameStateHandler.Instance.GameState == GameState.game)
         {
