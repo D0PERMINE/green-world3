@@ -30,6 +30,7 @@ public class FirstLevelGameManager : MonoBehaviour
 
     [SerializeField] private AudioSource willkommenAudio;
     [SerializeField] private AudioSource einleitungAudio;
+    [SerializeField] private AudioSource mimoWissensQuizAudio;
     [SerializeField] private ShowText showText;
 
 
@@ -126,6 +127,7 @@ public class FirstLevelGameManager : MonoBehaviour
     {
         GameStateHandler.Instance.GameState = GameState.firstQuizIsSolved;
         endingStory.SetActive(true);
+        mimoWissensQuizAudio.Play();
 
         // Starte die Coroutine, um zu warten, bis der Text vollständig getippt ist
         StartCoroutine(WaitForTextToFinish());
@@ -137,6 +139,7 @@ public class FirstLevelGameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && showText.IsTyping)
             {
+                mimoWissensQuizAudio.Stop();
                 break;  // Breche die schleife ab, da die Story beendet wurde
             }
 

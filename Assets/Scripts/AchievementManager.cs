@@ -9,6 +9,8 @@ public class AchievementManager : MonoBehaviour
     [SerializeField] private ShowText showAchievementText;
     [SerializeField] private GameObject storyPanel;
     [SerializeField] private ShowText showText;
+    [SerializeField] private AudioSource achievementAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class AchievementManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         storyPanel.SetActive(true);
+        achievementAudio.Play();
         //yield return null;
         //StartCoroutine(showText.TypeText());
     }
