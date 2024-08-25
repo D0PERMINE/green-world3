@@ -10,10 +10,12 @@ public class AchievementManager : MonoBehaviour
     [SerializeField] private GameObject storyPanel;
     [SerializeField] private ShowText showText;
     [SerializeField] private AudioSource achievementAudio;
-
+    [SerializeField] float delayBeforeEndScene;
+    [SerializeField] GameObject endScene;
     // Start is called before the first frame update
     void Start()
     {
+        endScene.SetActive(false);
         StartCoroutine(CityFade());
         StartCoroutine(StopDirtySmokeParticles());
         StartCoroutine(StartTyping());
@@ -37,7 +39,18 @@ public class AchievementManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         storyPanel.SetActive(true);
         achievementAudio.Play();
+       
         //yield return null;
         //StartCoroutine(showText.TypeText());
+    }
+
+    public void StartEndScene()
+    {
+        StartCoroutine(ShowEndScene());
+    }
+    IEnumerator ShowEndScene()
+    {
+        yield return new WaitForSeconds(delayBeforeEndScene);
+       endScene.SetActive(true);
     }
 }
