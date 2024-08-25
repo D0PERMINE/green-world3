@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trashType: 2
   playerController: {fileID: 0}
+  trashBinTypeText: {fileID: 0}
   glowEffect: {fileID: 141249384799755380}
   trashBinManager: {fileID: 0}
 --- !u!61 &-8277470741724567805
