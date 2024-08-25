@@ -19,8 +19,13 @@ public class SpriteFader : MonoBehaviour
             yield return StartCoroutine(FadeIn(sprite));
             yield return new WaitForSeconds(delayBetweenFades);
         }
-        GetComponent<AchievementManager>().StartEndScene();
-        Debug.Log("End");
+
+        if (GetComponent<AchievementManager>())
+        {
+            GetComponent<AchievementManager>().StartEndScene();
+            Debug.Log("End");
+        }
+      
     }
 
     IEnumerator FadeIn(SpriteRenderer sprite)
