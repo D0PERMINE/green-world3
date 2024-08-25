@@ -2211,6 +2211,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5195500821582717843, guid: 6ecf5bcec20adfa429a788f660f29ff5, type: 3}
   m_PrefabInstance: {fileID: 273149849}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &293215557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1856346921533134182, guid: 9497d72f3188c65419e2bc7b76552a0d, type: 3}
+  m_PrefabInstance: {fileID: 573783054338458349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &293964411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,6 +2656,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1456180946}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &306885606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 428848289395940177, guid: a3d8581ddb2a6f1418d6d475b89b0bbc, type: 3}
+  m_PrefabInstance: {fileID: 6705850860844696631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &338618287
 GameObject:
   m_ObjectHideFlags: 0
@@ -9869,6 +9879,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 662194080356567718, guid: 366bd147d3b568843ab9463d10b7fb98, type: 3}
   m_PrefabInstance: {fileID: 1372118794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1392660175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 725995798861870194, guid: aebdee5aa1d4f78439f81f2b47a07085, type: 3}
+  m_PrefabInstance: {fileID: 4715438767863895736}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1404746355
 PrefabInstance:
@@ -32735,6 +32750,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875808775}
   m_CullTransparentMesh: 1
+--- !u!1 &1879832055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8417599477426444958, guid: 172daa53998a84348a9830b4ec59cd2a, type: 3}
+  m_PrefabInstance: {fileID: 5739664751546348739}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1896112799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35516,6 +35536,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1801378258}
+    - target: {fileID: 5346464742508449519, guid: 9497d72f3188c65419e2bc7b76552a0d, type: 3}
+      propertyPath: trashBinTypeText
+      value: 
+      objectReference: {fileID: 293215557}
     - target: {fileID: 7110786825648795338, guid: 9497d72f3188c65419e2bc7b76552a0d, type: 3}
       propertyPath: glowColor.b
       value: 0.34901962
@@ -39310,6 +39334,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1801378258}
+    - target: {fileID: -6014018152386041328, guid: aebdee5aa1d4f78439f81f2b47a07085, type: 3}
+      propertyPath: trashBinTypeText
+      value: 
+      objectReference: {fileID: 1392660175}
     - target: {fileID: 141249384799755380, guid: aebdee5aa1d4f78439f81f2b47a07085, type: 3}
       propertyPath: glowColor.b
       value: 0.46666667
@@ -40570,6 +40598,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1801378258}
+    - target: {fileID: -5702916904482550543, guid: 172daa53998a84348a9830b4ec59cd2a, type: 3}
+      propertyPath: trashBinTypeText
+      value: 
+      objectReference: {fileID: 1879832055}
     - target: {fileID: -2654952591353442582, guid: 172daa53998a84348a9830b4ec59cd2a, type: 3}
       propertyPath: m_Size.x
       value: 1.2085686
@@ -41455,6 +41487,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1801378258}
+    - target: {fileID: 9032685938256547152, guid: a3d8581ddb2a6f1418d6d475b89b0bbc, type: 3}
+      propertyPath: trashBinTypeText
+      value: 
+      objectReference: {fileID: 306885606}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

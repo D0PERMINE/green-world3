@@ -13,6 +13,7 @@ public class TrashBin : MonoBehaviour
    // public string binType;
     public TrashType trashType;
     public PlayerController playerController;
+    [SerializeField] GameObject trashBinTypeText;
     public GlowEffect glowEffect;
     private bool trashDropped;
     public TrashBinManager trashBinManager;
@@ -20,11 +21,13 @@ public class TrashBin : MonoBehaviour
 
     private void Start()
     {
-       // playerController = FindObjectOfType<PlayerController>();
+        trashBinTypeText.SetActive(false);
+        // playerController = FindObjectOfType<PlayerController>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        trashBinTypeText.SetActive(true);
         glowEffect.TriggerGlow(glowEffect.glowStrengthOnSelection);
     }
     public void SetTrashDropped(bool trashDropped)
@@ -68,7 +71,7 @@ public class TrashBin : MonoBehaviour
         {
             playerController.OnCollisionWithTashBin = false;
             playerController.SelectedTrashBin = null;
-   
+            trashBinTypeText.SetActive(false);
         }
     }
 
