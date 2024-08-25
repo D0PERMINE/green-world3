@@ -24,7 +24,7 @@ public class QuizUIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && GameStateHandler.Instance.GameState == GameState.game)
         {
             CheckSelectedAnswer();
         }
