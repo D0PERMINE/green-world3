@@ -10,6 +10,7 @@ public class FadeEffect : MonoBehaviour
     // Call this to start fading the image to full opacity
     public void StartFadeIn()
     {
+        
         StartCoroutine(FadeToBlack());
     }
 
