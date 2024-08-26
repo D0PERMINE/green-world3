@@ -36,7 +36,7 @@ public class AchievementManager : MonoBehaviour
 
     IEnumerator StartTyping()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         storyPanel.SetActive(true);
         achievementAudio.Play();
        

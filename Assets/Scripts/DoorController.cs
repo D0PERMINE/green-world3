@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    [SerializeField] private float moveDistance; // Die Entfernung, die die Tür nach oben bewegt werden soll
+    //[SerializeField] private float moveDistance; // Die Entfernung, die die Tür nach oben bewegt werden soll
     [SerializeField] private float moveSpeed; // Die Geschwindigkeit, mit der die Tür sich bewegt
 
     [SerializeField] bool isOpening = false; // Zustand, ob die Tür sich öffnet oder nicht
