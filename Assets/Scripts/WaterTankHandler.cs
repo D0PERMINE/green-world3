@@ -5,21 +5,22 @@ using UnityEngine.UI;
 
 public class WaterTankHandler : MonoBehaviour
 {
-    [SerializeField] Image waterBarImage;
-    public AudioSource addWaterAudio;
-    [SerializeField] Color originalColor; // Ursprüngliche Farbe des Balkens
-    [SerializeField] Color blinkColor; // Farbe, in die geblinkt werden soll
+    [SerializeField] private Image waterBarImage;
+    [SerializeField] private AudioSource addWaterAudio;
+    [SerializeField] private Color originalColor; // Ursprüngliche Farbe des Balkens
+    [SerializeField] private Color blinkColor; // Farbe, in die geblinkt werden soll
 
-    [SerializeField] float currentWater; // Aktuelles Wasser
-    [SerializeField] float maxWater = 1f; // Aktuelles Wasser
-    float blinkTimer;
-    float levelDuration = 1; 
-    [SerializeField] float blinkingDuration = 1;
-    [SerializeField] bool isBlinking = false;
-    [SerializeField] float addedWaterAmount = 0.25f;
-    [SerializeField] float substractedWaterAmount = 0.01f;
-    [SerializeField] float normalizedWaterTime = 0;
-    [SerializeField] GameObject gameManager;
+    [SerializeField] private float currentWater; // Aktuelles Wasser
+    [SerializeField] private float maxWater = 1f; // Aktuelles Wasser
+    [SerializeField] private float blinkTimer;
+    [SerializeField] private float levelDuration = 1; 
+    [SerializeField] private float blinkingDuration = 1;
+    [SerializeField] private bool isBlinking = false;
+    [SerializeField] private float addedWaterAmount = 0.25f;
+    [SerializeField] private float substractedWaterAmount = 0.01f;
+    [SerializeField] private float normalizedWaterTime = 0;
+    [SerializeField] private GameObject gameManager;
+
     private void Start()
     {
         originalColor = waterBarImage.color;
@@ -109,15 +110,24 @@ public class WaterTankHandler : MonoBehaviour
     {
         while (normalizedWaterTime <= 1f)
         {
+            // Überprüfe, ob das Spiel pausiert ist
+            while (GameStateHandler.Instance.GameState != GameState.game)
+            {
+                // Warte einen Frame und überprüfe erneut, ob das Spiel pausiert ist
+                yield return null;
+            }
 
+            // Führe den Timer-Countdown fort, wenn das Spiel nicht pausiert ist
             normalizedWaterTime += Time.deltaTime / levelDuration;
             waterBarImage.fillAmount -= Time.deltaTime / levelDuration;
-            yield return null;
+
+            yield return null; // Warte einen Frame, bevor die Schleife fortgesetzt wird
         }
 
         Debug.Log("Lost");
         ShowLoseScreen();
     }
+
 
     void ShowLoseScreen()
     {
@@ -134,24 +144,5 @@ public class WaterTankHandler : MonoBehaviour
             Debug.Log("Game Manager error ");
         }
     }
-    //IEnumerator Timer()
-    //{
-    //    // leverDuration 100% 15 sec
-    //    // 15/100 - 1% /100
-    //    float normalizedTime = 0;
-    //    while (normalizedTime <= 1f)
-    //    {
-    //        currentWater -= 0.1f;
-    //        if (currentWater < 0)
-    //        {
-    //            currentWater = 0;
-    //        }
 
-    //        normalizedTime += Time.deltaTime/ levelDuration;
-    //        waterBarImage.fillAmount = currentWater / maxWater;
-    //        yield return null;
-    //    }
-
-    //    waterBarImage.color = originalColor;
-    //}
 }

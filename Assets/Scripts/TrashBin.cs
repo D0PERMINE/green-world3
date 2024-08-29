@@ -13,6 +13,7 @@ public class TrashBin : MonoBehaviour
    // public string binType;
     public TrashType trashType;
     public PlayerController playerController;
+    [SerializeField] GameObject trashBinTypeText;
     public GlowEffect glowEffect;
     private bool trashDropped;
     public TrashBinManager trashBinManager;
@@ -20,11 +21,13 @@ public class TrashBin : MonoBehaviour
 
     private void Start()
     {
-       // playerController = FindObjectOfType<PlayerController>();
+        trashBinTypeText.SetActive(false);
+        // playerController = FindObjectOfType<PlayerController>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        trashBinTypeText.SetActive(true);
         glowEffect.TriggerGlow(glowEffect.glowStrengthOnSelection);
     }
     public void SetTrashDropped(bool trashDropped)
@@ -40,24 +43,24 @@ public class TrashBin : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>())
         {
             playerController = other.gameObject.GetComponent<PlayerController>();
-            if (playerController.heldTrash != null)
+            if (playerController.HeldTrash != null)
             {
-                TrashType heldTrashType = playerController.heldTrash.GetComponent<Trash>().trash;
+                TrashType heldTrashType = playerController.HeldTrash.GetComponent<Trash>().trash;
 
                 if (heldTrashType == trashType)
                 {
                     Debug.Log("true");
-                    playerController.correctTrashType = true;
+                    playerController.CorrectTrashType = true;
                 }
                 else
                 {
                     Debug.Log("false");
-                    playerController.correctTrashType = false;
+                    playerController.CorrectTrashType = false;
                 }
 
                
-                playerController.onCollisionWithTashBin = true;
-                playerController.selectedTrashBin = this;
+                playerController.OnCollisionWithTashBin = true;
+                playerController.SelectedTrashBin = this;
             }
         }
     }
@@ -66,9 +69,9 @@ public class TrashBin : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerController>())
         {
-            playerController.onCollisionWithTashBin = false;
-            playerController.selectedTrashBin = null;
-   
+            playerController.OnCollisionWithTashBin = false;
+            playerController.SelectedTrashBin = null;
+            trashBinTypeText.SetActive(false);
         }
     }
 

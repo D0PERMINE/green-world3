@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda9034065522fd4787bc6c229445226, type: 3}
   m_Name: QuizQuestion_3
   m_EditorClassIdentifier: 
-  Question: e6eet?
-  Description_1: dgssssssssssssssss
-  Image_1: {fileID: 21300000, guid: bdde4db05d797ca48b090e0a6aab0514, type: 3}
-  Description_2: 7980zgjhnfbsdvfvsawefvcxyxsdaaaaaaaasdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  Image_2: {fileID: 21300000, guid: 7e92ce27868331048ba68fac0a35becd, type: 3}
+  Question: "Wie viel Liter Wasser ben\xF6tigt man um 2-3 St\xFCck (~ 1 Kg) Avocados
+    herzustellen ?"
+  Description_1: Mehr als 49 Liter
+  Image_1: {fileID: 21300000, guid: e3a1e6751c66d6c40900c150dde9604e, type: 3}
+  Description_2: Weniger als 49 Liter
+  Image_2: {fileID: 21300000, guid: 4bcd56a093f831f488063a4cfac59eb0, type: 3}
   rightOption: 0

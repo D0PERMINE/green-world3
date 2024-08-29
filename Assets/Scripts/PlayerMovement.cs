@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
 
-    public Rigidbody2D rb;
-    public Animator animator;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator;
 
-    public Vector2 movement;
-    public AudioSource footstepAudio;
+    [SerializeField] private Vector2 movement;
+    [SerializeField] private AudioSource footstepAudio;
 
     private bool canMove; // Steuerung der Bewegungsfähigkeit
+
+    // getter und setter
+    public Vector2 Movement { get => movement; set => movement = value; }
 
     private void Start()
     {
@@ -28,10 +31,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameStateHandler.Instance.GameState != GameState.game) { return; }
+        if (GameStateHandler.Instance.GameState != GameState.game) { footstepAudio.enabled = false; return; }
         Move();
         FoodStepAudioOn();
-
     }
 
     public void Move()
@@ -76,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     private void FoodStepAudioOn()
     {
         // Überprüfe, ob der Charakter sich bewegt
-        if (IsCharacterMoving() && canMove)
+        if (IsCharacterMoving() && canMove && GameStateHandler.Instance.GameState == GameState.game)
         {
             footstepAudio.enabled = true;
         }

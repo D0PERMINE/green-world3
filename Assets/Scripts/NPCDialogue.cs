@@ -5,14 +5,14 @@ using TMPro;
 public class NPCDialogue : MonoBehaviour
 {
     [SerializeField] GameObject questionSymbol;
-    public TMP_Text npcNameText; // TextMeshPro Text-Objekt für den NPC-Namen
-    public TMP_Text dialogueText; // TextMeshPro Text-Objekt für die Anzeige des Dialogtextes
-    public GameObject dialogueBox; // Das UI-Element, das den Dialogtext enthält
-    public TrashSpawner trashSpawner; // Referenz auf den TrashSpawner
+    [SerializeField] private TMP_Text npcNameText; // TextMeshPro Text-Objekt für den NPC-Namen
+    [SerializeField] private TMP_Text dialogueText; // TextMeshPro Text-Objekt für die Anzeige des Dialogtextes
+    [SerializeField] private GameObject dialogueBox; // Das UI-Element, das den Dialogtext enthält
+    [SerializeField] private TrashSpawner trashSpawner; // Referenz auf den TrashSpawner
 
-    public string npcName; // Der Name des NPCs
-    public string[] initialDialogueLines; // Zeilen des ersten Dialogs
-    public string[] followUpDialogueLines; // Zeilen des Folge-Dialogs
+    [SerializeField] private string npcName; // Der Name des NPCs
+    [SerializeField] private string[] initialDialogueLines; // Zeilen des ersten Dialogs
+    [SerializeField] private string[] followUpDialogueLines; // Zeilen des Folge-Dialogs
 
     private int currentLineIndex = 0;
     private bool playerInRange = false;
@@ -21,8 +21,13 @@ public class NPCDialogue : MonoBehaviour
     private Coroutine typingCoroutine; // Zum Verwalten der Coroutine
     private bool hasCompletedFirstDialogue = false; // Status, ob der erste Dialog abgeschlossen wurde
 
-    public PlayerMovement playerMovement; // Referenz zum playerMovement
+    [SerializeField] private PlayerMovement playerMovement; // Referenz zum playerMovement
 
+    [SerializeField] WaterTankHandler waterTankHandler;
+    [SerializeField] private CameraController cameraController;
+
+    // getter und setter
+    public bool IsDialogueActive { get => isDialogueActive; set => isDialogueActive = value; }
 
     void Start()
     {
@@ -49,6 +54,7 @@ public class NPCDialogue : MonoBehaviour
             {
                 DisplayNextLine();
             }
+            cameraController.TriggerNPCDialigZoom();
         }
 
         NoMovingDuringDialog();
@@ -97,6 +103,7 @@ public class NPCDialogue : MonoBehaviour
 
         foreach (char letter in currentLine.ToCharArray())
         {
+            Debug.Log("lol: " + letter);
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.05f); // Wartezeit zwischen den Buchstaben
         }
@@ -148,7 +155,8 @@ public class NPCDialogue : MonoBehaviour
             hasCompletedFirstDialogue = true;
             if (trashSpawner != null)
             {
-                trashSpawner.EnableSpawning();
+                trashSpawner.EnableSpawning(); 
+                waterTankHandler.StartWaterTimer();
             }
         }
     }
